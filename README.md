@@ -18,27 +18,27 @@ Templates created with Ease use the .ease.php file extension, clearly distinguis
 ### Example of an ease
 
 ```php
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        ~HEAD // Example of an ease
-        ~PUT // Another ease
-        <h1>Welcome Brother</h1>
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    ~HEAD // Example of an ease
+    ~PUT // Another ease
+    <h1>Welcome Brother</h1>
+</body>
+</html>
 ```
 
 ### Render of an ease file
 
 ```php
-    use function Engine\Render\Render;
+use function Engine\Render\Render;
 
-    include_once "start-ease-engine.php";
-
-    render("home"); // home will be mapped from home.ease.php to home.php (<filename>.ease.php -> <filename>.php)
+include_once "start-ease-engine.php";
+// home will be mapped from home.ease.php to home.php (<filename>.ease.php -> <filename>.php)
+render("home");
 ```
