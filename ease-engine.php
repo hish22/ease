@@ -1,9 +1,16 @@
 <?php
+
 include_once 'eases/ease.php';
 
 include_once 'eases/dynamic_ease.php';
 
+include_once "eases/conditional_ease.php";
+
 include_once 'error_logic/ease_errors.php';
+
+include_once 'error_logic/ease-err-enum.php';
+
+include_once "DS/Stack.php";
 
 include_once 'Engine/Summon/fetcher.php';
 
@@ -18,7 +25,9 @@ include_once 'Engine/Render/render.php';
 include_once 'config/temp_config.php';
 
 use Engine\Construction\Construct_PHP;
+use Engine\Summon\Extracter;
 use Engine\Summon\Fetcher;
+use Error_logic\Ease_errors;
 
 class EaseEngine extends Fetcher {
 
@@ -83,6 +92,3 @@ class EaseEngine extends Fetcher {
     }
 
 }
-
-
-

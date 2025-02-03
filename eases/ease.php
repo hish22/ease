@@ -8,5 +8,7 @@ enum Ease : String {
     case INCLUDE = 'INCLUDE';
     case HEAD = "HEAD";
     case PATCH = "PATCH";
+    case IF = "IF";
+    case ENDIF = "ENDIF";
 
 }

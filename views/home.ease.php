@@ -1,3 +1,4 @@
+<?php $a = 3; $b = true ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,14 @@
     ~PUT
     ~PATCH
     ~INCLUDE way
-    <h1>Welcome Brother</h1>
+
+    ~IF ($a > 2)
+        ~IF (4 > 2 || 3 > 1)
+            ~IF ($b == true)
+                <h1>Hello world</h1>
+            ~ENDIF
+        ~ENDIF
+    ~ENDIF
+
 </body>
 </html>

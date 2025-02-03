@@ -2,3 +2,4 @@ err101: No such ease is Known!
 err102: null file location provided!
 err103: invalid include of same file!
 err104: regular eases can't have arguments!
+err105: No such ease file!
