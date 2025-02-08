@@ -1,4 +1,4 @@
-<?php $a = 3; $b = true ?>
+<?php $a = 3; $b = true; $home = 1; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +10,9 @@
     ~HEAD
     ~PUT
     ~PATCH
-    ~INCLUDE way
-
-    ~IF ($a > 2)
-        ~IF (4 > 2 || 3 > 1)
+    <h1> ~PRINT("WELCOME", $home) </h1>
+    ~IF($a > 2)
+        ~IF ((4 > 2) || 3 > 1)
             ~IF ($b == true)
                 <h1>Hello world</h1>
             ~ENDIF

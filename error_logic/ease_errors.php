@@ -5,6 +5,7 @@ namespace Error_logic;
 use DS\Stack;
 
 use function Engine\Render\render;
+use function Engine\Render\renderErr;
 
 trait Ease_errors {
 
@@ -38,7 +39,7 @@ trait Ease_errors {
     }
 
     protected function throwErr() {
-        render('error_view/_error');
+        renderErr();
         exit();
     }
 

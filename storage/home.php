@@ -1,4 +1,4 @@
-<?php $a = 3; $b = true ?>
+<?php $a = 3; $b = true; $home = 1; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +10,9 @@
 <input type="hidden" value="HEAD" name="_method">
 <input type="hidden" value="PUT" name="_method">
 <input type="hidden" value="PATCH" name="_method">
-<?php include 'storage/way.php' ?>
-
+<?= "WELCOME", $home ?>
 <?php if($a > 2): ?>
-<?php if(4 > 2 || 3 > 1): ?>
+<?php if((4 > 2) || 3 > 1): ?>
 <?php if($b == true): ?>
                 <h1>Hello world</h1>
 <?php endif ?>

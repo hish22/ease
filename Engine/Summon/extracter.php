@@ -18,6 +18,7 @@ use function Eases\dynamic\inculde_content;
 use function Eases\dynamic\head;
 use function Eases\dynamic\patch;
 use function Eases\conditional\if_ease_cond;
+use function Eases\dynamic\_print;
 
 class Extracter {
 
@@ -122,6 +123,10 @@ class Extracter {
                     Ease_err_enum::ERR104->name)->no_args_for_reg_ease($removed_spaces_from_extract_ease);
 
                 $parsed_content[] = htmlspecialchars(end_ease_if());
+            break;
+
+            case Ease::PRINT:
+                $parsed_content[] = htmlspecialchars(_print($line));
             break;
 
             default:

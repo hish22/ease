@@ -10,5 +10,6 @@ enum Ease : String {
     case PATCH = "PATCH";
     case IF = "IF";
     case ENDIF = "ENDIF";
+    case PRINT = "PRINT";
 
 }

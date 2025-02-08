@@ -21,7 +21,17 @@ class Fetcher {
             if(str_contains($line,'~')) {
                 $extract_ease = explode('~',$line)[1];
                 $extract_ease_with_space = explode(' ',$extract_ease);
-                $extract_ease = Ease::tryFrom(explode("\r\n",$extract_ease_with_space[0])[0]);
+
+                /* Check if the syntax of the ease provided as compresed line 
+                /* -> ~IF(2 > 2) Rather than ~IF (2 > 2)
+                */
+                if(str_contains($extract_ease_with_space[0],"(")) {
+                    $extract_ease_without_prant = explode("(",$extract_ease);
+                    $extract_ease = Ease::tryFrom(explode("\r\n",$extract_ease_without_prant[0])[0]);
+                } else {
+                    $extract_ease = Ease::tryFrom(explode("\r\n",$extract_ease_with_space[0])[0]);
+                }
+                
                 Extracter::extract(self::$file_parsed_version,
                 $extract_ease,$extract_ease_with_space,$line,$lines_number,$filename);
             } else {

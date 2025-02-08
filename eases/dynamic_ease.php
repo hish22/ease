@@ -19,5 +19,13 @@ function patch(): String {
 }
 
 function inculde_content($content): string {
-    return "<?php include 'storage/{$content}.php' ?>"."\n";
+    $filtered = basename($content);
+    return "<?php include 'storage/{$filtered}.php' ?>"."\n";
+}
+
+function _print($content): string {
+    // Find parentheses pattern ($x, data)
+    preg_match("/\((.*?)\)/",$content,$printable);
+
+    return "<?= $printable[1] ?>"."\n";
 }
