@@ -9,4 +9,6 @@ enum Ease_err_enum : String {
     case ERR104 = "regular eases can't have arguments!";
     case ERR105 = "No such ease file!";
     case ERR106 = "each IF ease must have an equivalent ENDIF!";
+    case ERR107 = "each ENDIF ease must have an equivalent IF!";
+    case ERR108 = "Wrong condition statment provided!";
 }

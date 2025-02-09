@@ -1,5 +1,3 @@
-<?php use Engine\Summon\Extracter; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,12 +41,12 @@
 </head>
 <body>
     <div class="container">
-        <h1><?= Extracter::getEaseErrCode() ?></h1>
-        <h2><?= Extracter::getEaseErrMsg() ?></h2>
+        <h1><?=$error_code?></h1>
+        <h2><?=$error_msg?></h2>
         <p>Something went wrong.</p>
-        <p>Some err occurred at: <?= Extracter::getEaseErrFileName() ?>.ease.php</p>
+        <p>Some err occurred at: <?= $filename ?>.ease.php</p>
         <p></p>
-        <p id='line_of_error'> Line <?=Extracter::getEaseErrLineNumber() ?>: <?= Extracter::getEaseErrLine() ?></p>
+        <p id='line_of_error'> Line <?= $line_number ?>: <?= $line_of_error ?></p>
     </div>
 </body>
 </html>

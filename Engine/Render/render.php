@@ -11,6 +11,7 @@ function render(String $file,Array $data=[]) {
     return $content;
 }
 
-function renderErr() {
+function renderErr($err_data) {
+    extract($err_data);
     include_once "storage/error_view/_error.php";
 }

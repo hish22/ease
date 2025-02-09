@@ -1,12 +1,18 @@
 <?php
 
+include_once 'Common/sap-args.php';
+
 include_once 'eases/ease.php';
 
 include_once 'eases/dynamic_ease.php';
 
 include_once "eases/conditional_ease.php";
 
-include_once 'error_logic/ease_errors.php';
+include_once 'error_logic/line-err/ease-line-err.php';
+
+include_once 'error_logic/block-err/ease-block-err.php';
+
+include_once 'error_logic/ease-errors-handler.php';
 
 include_once 'error_logic/ease-err-enum.php';
 

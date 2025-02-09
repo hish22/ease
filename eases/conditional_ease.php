@@ -8,15 +8,8 @@ namespace Eases\conditional;
  * Check the syntax and logic of an IF ease statment
  */
 function if_ease_cond($condition_state): String {
-
-    // Remove leading and trailing spaces
-    $rm_ws = trim($condition_state);
-
-    // Find the first occurrence of the open parentheses
-    $open_pos = strpos($rm_ws,"(") + 1;
-
-    // The condition value without parentheses
-    $condition = substr($rm_ws,$open_pos,-1); 
+    
+    $condition = args_data($condition_state);
 
     // Return equivalent php statment
     return "<?php if($condition): ?>"."\n";

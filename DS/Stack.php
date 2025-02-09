@@ -13,15 +13,19 @@ class Stack{
     }
 
     public function push($value) {
-        $this->Stack[] = $value;
+        array_push($this->Stack,$value);
         $this->top++;
     }
 
     public function pop() {
-        $poped = $this->Stack[$this->top-1];
-        unset($this->Stack[$this->top-1]);
+        if(empty($this->Stack)) {
+            throw new \UnderflowException("Stack is empty, cannot pop");
+        }
+        // $poped = $this->Stack[$this->top-1];
+        // unset($this->Stack[$this->top-1]);
+        // $this->Stack = array_values($this->Stack);
         $this->top--;
-        return $poped;
+        return array_pop($this->Stack);
     }
 
     public function getTop() {

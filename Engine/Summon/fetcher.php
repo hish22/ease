@@ -4,20 +4,30 @@ namespace Engine\Summon;
 
 use Engine\Summon\Extracter;
 use Eases\Ease;
+use Error_logic\Block_err\Ease_block_err;
+use Error_logic\Ease_err_enum;
 use ValueError;
 use Error_logic\Ease_errors;
+use Error_logic\EaseErrorsHandler;
 
 class Fetcher {
 
-    use Ease_errors;
-
     private function __construct(){}
     private static $file_parsed_version = [];
+    private static EaseErrorsHandler $errorHandler;
+
     public static function fetch($filename) {
         $lines = file("views/{$filename}.ease.php");
+
+        $err = new EaseErrorsHandler(Ease_err_enum::ERR106->value,$filename,Ease_err_enum::ERR106->name);
+        $err->no_ease_endif_or_if_included($lines);
+
         $lines_number = 0;
+        // I may remove it.
+        $controllable_line_nums = 0;
         foreach($lines as $line) {
             $lines_number++;
+            $controllable_line_nums++;
             if(str_contains($line,'~')) {
                 $extract_ease = explode('~',$line)[1];
                 $extract_ease_with_space = explode(' ',$extract_ease);
@@ -33,7 +43,8 @@ class Fetcher {
                 }
                 
                 Extracter::extract(self::$file_parsed_version,
-                $extract_ease,$extract_ease_with_space,$line,$lines_number,$filename);
+                $extract_ease,$extract_ease_with_space,$line,$lines_number,$controllable_line_nums,
+                $filename);
             } else {
                 self::$file_parsed_version[] = htmlspecialchars($line);
             }
