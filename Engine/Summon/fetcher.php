@@ -17,7 +17,7 @@ class Fetcher {
     private static EaseErrorsHandler $errorHandler;
 
     public static function fetch($filename) {
-        $lines = file("views/{$filename}.ease.php");
+        $lines = file("$filename.ease.php");
 
         $err = new EaseErrorsHandler(Ease_err_enum::ERR106->value,$filename,Ease_err_enum::ERR106->name);
         $err->no_ease_endif_or_if_included($lines);

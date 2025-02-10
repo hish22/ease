@@ -10,7 +10,8 @@ class Save {
 
     public static function save_cache($hash_data,$filename): void {
         $parsed_json = json_encode($hash_data);
-        $cache_file = "data/cache/{$filename}_cache.json";
+        $base_version = basename($filename);
+        $cache_file = "data/cache/{$base_version}_cache.json";
         file_put_contents($cache_file,$parsed_json);
     }
 
