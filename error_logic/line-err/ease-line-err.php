@@ -33,6 +33,9 @@ trait Ease_line_err {
 
     public function no_such_ease_file($ease_file_name) {
         if(!file_exists("storage/$ease_file_name.php")) {
+            if(file_exists("views/$ease_file_name.ease.php")) {
+                return;
+            }
             $this->throwErr();
         }
     }

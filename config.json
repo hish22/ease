@@ -1,3 +1,4 @@
 {
-    "Producation": false
+    "Producation": false,
+    "ParseType": "single"
 }

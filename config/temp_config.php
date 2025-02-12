@@ -4,6 +4,11 @@
 $config = file_get_contents("config.json");
 
 /**
- * @var bool A Boolean value related to specify the development environment
+ * A Boolean value related to specify the development environment.
  */
-$Producation = json_decode($config)->Producation;
+define('PRODUCTION', json_decode($config)->Producation);
+
+/**
+ * A Boolean value related to specify the parsing type.
+ */
+define('PARSETYPE',json_decode($config)->ParseType);

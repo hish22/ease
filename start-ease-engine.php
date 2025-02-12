@@ -1,5 +1,5 @@
 <?php
 
-include_once 'ease-engine.php';
+include_once 'Engine/ease-engine.php';
 
-EaseEngine::BuildEaseEngine();
+EaseEngine::BuildEaseEngine()->full();
