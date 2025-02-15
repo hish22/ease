@@ -2,14 +2,14 @@
 
 namespace Engine\Summon;
 
-use DS\Stack;
+use Common\DS\Stack;
+use Engine\Buffer\MainBuffer;
 use Engine\Construction\Construct_PHP;
-use Engine\buffer\ParsedContentBuffer;
 
-abstract class Entry extends ParsedContentBuffer {
+abstract class Entry extends MainBuffer {
 
     private function __construct(){}
-
+    
     /**
      * Stack to track views directores
      * @var Stack
@@ -40,6 +40,7 @@ abstract class Entry extends ParsedContentBuffer {
      * @return void
      */
     private function parse_file(string $file) {
+
         if(str_contains($file,"ease.php")){
 
             if(!empty(self::retrieveBuffer())) {
@@ -52,6 +53,28 @@ abstract class Entry extends ParsedContentBuffer {
             Fetcher::fetch($file_name);
 
             Construct_PHP::construct($file_name,self::retrieveBuffer(),'');
+
+            self::parse_partial_file();
+
+        }
+    }
+
+    /**
+     * Parses the included file through the ease parsed file into its equivalent PHP or HTML representation.
+     * 
+     * - First, checks if the stack is empty.
+     * - The stack usually contains included files.
+     * - Processes the files through the parsed file.
+     * 
+     * @return void
+     */
+    private function parse_partial_file() {
+        if(PARSETYPE == "partial") {
+            if(!is_null(self::partialQueue()) && !empty(self::partialQueue())) {
+
+                self::parse_file(self::dequeueFromPartialStack());
+    
+            }
         }
     }
 
@@ -119,6 +142,11 @@ abstract class Entry extends ParsedContentBuffer {
      * @return void
      */
     protected function openFile($filepath) {
+
+        if(PARSETYPE == "partial") {
+            self::init_partial_files_queue();
+        }
+
         self::parse_file($filepath);
     }
 

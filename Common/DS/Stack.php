@@ -1,6 +1,6 @@
 <?php
 
-namespace DS;
+namespace Common\DS;
 
 class Stack{
 

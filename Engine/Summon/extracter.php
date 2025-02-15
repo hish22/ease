@@ -26,6 +26,7 @@ class Extracter {
 
     // No need to construct such a class
     private function __construct(){}
+
     /**
      * Extracts and processes a specified ease from the knowledge base and returns the corresponding PHP or HTML output.
      * 

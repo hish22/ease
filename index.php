@@ -6,8 +6,8 @@ include_once 'Engine/ease-engine.php';
 
 $eng = EaseEngine::BuildEaseEngine();
 
-$eng->single("home");
+$eng->full();
 
-$eng->single("test/about");
+// $eng->partial("home");
 
 render("home",["name"=>"hisham"]);

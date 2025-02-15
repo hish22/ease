@@ -2,7 +2,8 @@
 
 namespace Engine\buffer;
 
-abstract class ParsedContentBuffer {
+trait ParsedContentBuffer {
+
     private static $buffer = [];
 
     protected static function addToBuffer($line) {

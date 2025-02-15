@@ -1,40 +1,10 @@
 <?php
 
-include_once 'Common/sap-args.php';
-
-include_once 'eases/ease.php';
-
-include_once 'eases/dynamic_ease.php';
-
-include_once "eases/conditional_ease.php";
-
-include_once 'error_logic/line-err/ease-line-err.php';
-
-include_once 'error_logic/block-err/ease-block-err.php';
-
-include_once 'error_logic/ease-errors-handler.php';
-
-include_once 'error_logic/ease-err-enum.php';
-
-include_once "DS/Stack.php";
-
-include_once 'Engine/buffer/parsed-buffer-manger.php';
-
-include_once 'Engine/Summon/entry.php';
-
-include_once 'Engine/Summon/fetcher.php';
-
-include_once 'Engine/Summon/extracter.php';
-
-include_once 'Engine/Construction/Construct_PHP.php';
-
-include_once 'Engine/Optimize/save.php';
-
-include_once 'Engine/Render/render.php';
-
-include_once 'config/temp_config.php';
+include_once 'loader/mainloader.php';
 
 use Engine\Summon\Entry;
+use Error_logic\SystemErr\Sys_err_enum;
+use Error_logic\SystemErr\SysErrHandler;
 
 class EaseEngine extends Entry {
 
@@ -50,13 +20,37 @@ class EaseEngine extends Entry {
         # Tepmplate engine main logic
         if(!PRODUCTION && PARSETYPE == "full") {
             self::openView();
+        } else {
+            $err = new SysErrHandler(
+                Sys_err_enum::ERR501->name,
+                Sys_err_enum::ERR501->value
+            );
+            $err->throwErr();
         }    
     }
 
     public function single($filepath) {
         if(!PRODUCTION && PARSETYPE == "single") {
             self::openFile("views/".$filepath.".ease.php");
-        } 
+        } else {
+            $err = new SysErrHandler(
+                Sys_err_enum::ERR502->name,
+                Sys_err_enum::ERR502->value
+            );
+            $err->throwErr();
+        }
+    }
+
+    public function partial($filepath) {
+        if(!PRODUCTION && PARSETYPE == "partial") {
+            self::openFile("views/".$filepath.".ease.php");
+        } else {
+            $err = new SysErrHandler(
+                Sys_err_enum::ERR503->name,
+                Sys_err_enum::ERR503->value
+            );
+            $err->throwErr();
+        }
     }
 
     /**

@@ -2,13 +2,14 @@
 
 namespace Engine\Summon;
 
+use EaseEngine;
 use Engine\Summon\Extracter;
 use Eases\Ease;
 use Error_logic\Ease_err_enum;
 use Error_logic\EaseErrorsHandler;
-use Engine\buffer\ParsedContentBuffer;
+use Engine\buffer\MainBuffer;
 
-class Fetcher extends ParsedContentBuffer {
+class Fetcher extends MainBuffer {
     /**
      * There's no need to instantiate the fetcher class.
      */
@@ -21,7 +22,10 @@ class Fetcher extends ParsedContentBuffer {
      * @return void
      */
     private static function blockErrHandler($filename,$lines) {
-        $err = new EaseErrorsHandler(Ease_err_enum::ERR106->value,$filename,Ease_err_enum::ERR106->name);
+        $err = new EaseErrorsHandler(
+        Ease_err_enum::ERR106->value,
+        $filename,
+        Ease_err_enum::ERR106->name);
         $err->no_ease_endif_or_if_included($lines);
     }
 
@@ -48,6 +52,13 @@ class Fetcher extends ParsedContentBuffer {
             $extract_ease_with_space = explode(' ',$extract_ease);
 
             $ease = self::ConstructEase($extract_ease,$extract_ease_with_space);
+
+            // First check if the ease has an argument, then after that
+            // we Check If the ease is INCLUDE and the parsing type is partial
+            // to parse the INCLUDED content
+            if(isset($extract_ease_with_space[1])) {
+                self::ParsePartialFile($ease,$extract_ease_with_space[1]);
+            }
             
             $new_parsed_ease = self::extractEase($ease,
             $extract_ease_with_space,
@@ -152,6 +163,23 @@ class Fetcher extends ParsedContentBuffer {
             $lines_number++;
             $controllable_line_nums++;
 
+        }
+    }
+
+    /**
+     * Parses any Ease file that is included within the parsed file.
+     * 
+     * When the parsing system is configured as partial, 
+     * any included Ease file within each Ease file
+     * will be parsed into its equivalent PHP file.
+     * 
+     * @param \Eases\Ease $ease The Ease instance to be processed.
+     * @param string $filePath The path of the Ease file to parse.
+     * @return void
+     */
+    private static function ParsePartialFile(Ease $ease,string $filePath) {
+        if(PARSETYPE == "partial" && $ease == Ease::INCLUDE) {
+            self::enqueueToPratialQueue("views/".trim($filePath).".ease.php");
         }
     }
 

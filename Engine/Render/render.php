@@ -15,3 +15,8 @@ function renderErr($err_data) {
     extract($err_data);
     include_once "storage/error_view/_error.php";
 }
+
+function renderSysErr($err_data) {
+    extract($err_data);
+    include_once "storage/error_view/_syserror.php";
+}

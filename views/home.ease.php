@@ -10,6 +10,8 @@
     ~HEAD
     ~PUT
     ~PATCH
+    ~INCLUDE way
+    ~INCLUDE test/about
     <h1> ~PRINT("WELCOME", $home) </h1>
     ~IF($a > 2)
         ~IF ((4 > 2) || 3 > 1)

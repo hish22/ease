@@ -2,7 +2,7 @@
 
 namespace Error_logic\Block_err;
 use Error_logic\Ease_errors;
-use DS\Stack;
+use Common\DS\Stack;
 
 trait Ease_block_err {
 
