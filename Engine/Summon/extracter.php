@@ -51,9 +51,9 @@ class Extracter {
         switch ($ease) {
             case Ease::PUT:
                $err = new EaseErrorsHandler(
-                    Ease_err_enum::ERR104->value,
+                    Ease_err_enum::ERR102->value,
                     $filename,
-                    Ease_err_enum::ERR104->name,
+                    Ease_err_enum::ERR102->name,
                     $line,
                     $lines_count);
                     $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
@@ -63,9 +63,9 @@ class Extracter {
     
             case Ease::DELETE:
                 $err = new EaseErrorsHandler(
-                    Ease_err_enum::ERR104->value,
+                    Ease_err_enum::ERR102->value,
                     $filename,
-                    Ease_err_enum::ERR104->name,
+                    Ease_err_enum::ERR102->name,
                     $line,
                     $lines_count);
                     $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
@@ -75,9 +75,9 @@ class Extracter {
 
             case Ease::HEAD:
                 $err = new EaseErrorsHandler(
-                    Ease_err_enum::ERR104->value,
+                    Ease_err_enum::ERR102->value,
                     $filename
-                    ,Ease_err_enum::ERR104->name,
+                    ,Ease_err_enum::ERR102->name,
                     $line,
                     $lines_count);
                     $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
@@ -87,23 +87,23 @@ class Extracter {
 
             case Ease::INCLUDE:
 
-                $err = new EaseErrorsHandler(Ease_err_enum::ERR102->value,
+                $err = new EaseErrorsHandler(Ease_err_enum::ERR201->value,
                 $filename,
-                Ease_err_enum::ERR102->name,
+                Ease_err_enum::ERR201->name,
                 $line,
                 $lines_count);
                 $err->null_parm_or_argum($removed_spaces_from_extract_ease);
 
-                $err = new EaseErrorsHandler(Ease_err_enum::ERR103->value,
+                $err = new EaseErrorsHandler(Ease_err_enum::ERR203->value,
                 $filename,
-                Ease_err_enum::ERR103->name,
+                Ease_err_enum::ERR203->name,
                 $line,
                 $lines_count);
                 $err->no_same_file_included($removed_spaces_from_extract_ease);
 
-                $err = new EaseErrorsHandler(Ease_err_enum::ERR105->value,
+                $err = new EaseErrorsHandler(Ease_err_enum::ERR202->value,
                 $filename,
-                Ease_err_enum::ERR105->name,
+                Ease_err_enum::ERR202->name,
                 $line,
                 $lines_count);
                 $err->no_such_ease_file($removed_spaces_from_extract_ease);
@@ -112,9 +112,9 @@ class Extracter {
             break;
 
             case Ease::PATCH:
-                $err = new EaseErrorsHandler(Ease_err_enum::ERR104->value,
+                $err = new EaseErrorsHandler(Ease_err_enum::ERR102->value,
                 $filename,
-                Ease_err_enum::ERR104->name,
+                Ease_err_enum::ERR102->name,
                 $line,
                 $lines_count);
                 $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
@@ -123,17 +123,12 @@ class Extracter {
             break;
 
             case Ease::IF:
-                $err = new EaseErrorsHandler(Ease_err_enum::ERR108->value,
+                $err = new EaseErrorsHandler(Ease_err_enum::ERR103->value,
                 $filename,
-                Ease_err_enum::ERR108->name,
+                Ease_err_enum::ERR103->name,
                 $line,
                 $lines_count);
                 $err->null_parm_or_argum_inc_pran($line);
-
-                // self::cond_ease_error(Ease_err_enum::ERR106->value,
-                // $line,
-                // $filename,
-                // Ease_err_enum::ERR106->name)->no_ease_endif_included($c_line_count);
 
                 return htmlspecialchars(if_ease_cond($line));
 
@@ -142,22 +137,38 @@ class Extracter {
             case Ease::ENDIF:
 
                 $err = new EaseErrorsHandler(
-                    Ease_err_enum::ERR104->value,
+                    Ease_err_enum::ERR102->value,
                     $filename
-                    ,Ease_err_enum::ERR104->name,
+                    ,Ease_err_enum::ERR102->name,
                     $line,
                     $lines_count);
                     $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
-
-                    // self::cond_ease_error(Ease_err_enum::ERR107->value,
-                    // $line,
-                    // $filename,
-                    // Ease_err_enum::ERR107->name)->no_ease_endif_included($c_line_count);
 
                 return htmlspecialchars(end_ease_if());
             break;
 
             case Ease::PRINT:
+
+                $err = new EaseErrorsHandler(
+                    Ease_err_enum::ERR106->value,
+                    $filename,
+                    Ease_err_enum::ERR106->name,
+                    $line,
+                    $lines_count
+                );
+
+                $err->no_pran_found($line);
+
+                $err = new EaseErrorsHandler(
+                    Ease_err_enum::ERR107->value,
+                    $filename,
+                    Ease_err_enum::ERR107->name,
+                    $line,
+                    $lines_count
+                );
+
+                $err->null_parm_or_argum_inc_pran($line);
+
                 return htmlspecialchars(_print($line));
             break;
 

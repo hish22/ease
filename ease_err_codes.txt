@@ -1,5 +1,12 @@
+// Eases , Error code : 100
 err101: No such ease is Known!
-err102: null file location provided!
-err103: invalid include of same file!
-err104: regular eases can't have arguments!
-err105: No such ease file!
+err102: regular eases can't have arguments!
+err103: each IF ease must have an equivalent ENDIF!
+err104: each ENDIF ease must have an equivalent IF!
+err105: Wrong condition statment provided!
+err106: null argument value provided!
+
+// File system , Error code : 200
+err201: null file location provided!
+err202: No such ease file!
+err203: invalid include of same file!

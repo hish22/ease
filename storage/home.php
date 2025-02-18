@@ -12,7 +12,10 @@
 <input type="hidden" value="PATCH" name="_method">
 <?php include 'storage/way.php' ?>
 <?php include 'storage/about.php' ?>
-<?= "WELCOME", $home ?>
+<?= "WELCOME", $name ?>
+
+<?= $dd . "welcome" . $ssd ?>
+
 <?php if($a > 2): ?>
 <?php if((4 > 2) || 3 > 1): ?>
             Hello world

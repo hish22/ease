@@ -2,6 +2,8 @@
 
 namespace Eases\dynamic;
 
+use Exception;
+
 function put(): String {
     return '<input type="hidden" value="PUT" name="_method">'."\n";
 }

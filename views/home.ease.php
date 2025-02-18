@@ -12,7 +12,10 @@
     ~PATCH
     ~INCLUDE way
     ~INCLUDE test/about
-    <h1> ~PRINT("WELCOME", $home) </h1>
+    <h1> ~PRINT("WELCOME", $name) </h1>
+
+    ~PRINT($dd . "welcome" . $ssd)
+
     ~IF($a > 2)
         ~IF ((4 > 2) || 3 > 1)
             Hello world
