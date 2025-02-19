@@ -60,6 +60,12 @@ include_once 'error_logic/systemErr/sys-err-enum.php';
 include_once 'error_logic/systemErr/sys-err-handler.php';
 
 /**
+ * Retrieve the core logic related to PHP errors.
+ */
+
+include_once 'error_logic/PHPErr/abort_file.php';
+
+/**
  * Retrieve the core logic of the ease engine.
  */
 

@@ -1,4 +1,11 @@
 {
-    "Producation": false,
-    "ParseType": "full"
+    "main": {
+        "Producation": false,
+        "ParseType": "full"
+    },
+    "error":{
+        "formatPHP": true
+    }
+
+    
 }

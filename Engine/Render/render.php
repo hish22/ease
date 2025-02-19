@@ -8,6 +8,7 @@ function render(String $file,Array $data=[]) {
     $filtered = basename($file);
     $content = ob_get_contents();
     include_once "storage/$filtered.php";
+    abort_if_error();
     return $content;
 }
 
