@@ -13,13 +13,18 @@
 <?php include 'storage/way.php' ?>
 <?php include 'storage/about.php' ?>
 <?= "WELCOME", " " ,$name ?>
-
 <?= $a ?>
 
 <?php if($a > 2): ?>
 <?php if((4 > 2) || 3 > 1): ?>
             Hello world
 <?php endif ?>
+<?php endif ?>
+
+<?php if($a < 3): ?>
+        yup yup
+<?php elseif($a > 3): ?>
+        AHAHAHA
 <?php endif ?>
 
 <?php if($a > 4): ?>

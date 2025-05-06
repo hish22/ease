@@ -25,12 +25,32 @@ class EaseErrorsHandler {
     
     private String $filename;
 
-    public function __construct($error_msg, $filename, $error_code, $line_of_error='', $line_number=0,) {
+    public function __construct($filename, $error_msg='Error', $error_code=000, $line_of_error='', $line_number=0) {
         $this->error_msg = $error_msg;
         $this->line_of_error = $line_of_error;
         $this->line_number = $line_number;
         $this->filename = $filename;
         $this->error_code = $error_code;
+    }
+
+    public function setErrorCode(string $error_code): void {
+        $this->error_code = $error_code;
+    }
+    
+    public function setErrorMsg(string $error_msg): void {
+        $this->error_msg = $error_msg;
+    }
+    
+    public function setLineOfError(string $line_of_error): void {
+        $this->line_of_error = $line_of_error;
+    }
+    
+    public function setLineNumber(int $line_number): void {
+        $this->line_number = $line_number;
+    }
+    
+    public function setFilename(string $filename): void {
+        $this->filename = $filename;
     }
 
     public function printErr() {

@@ -13,13 +13,18 @@
     ~INCLUDE way
     ~INCLUDE test/about
     <h1> ~PRINT("WELCOME", " " ,$name) </h1>
-
     ~PRINT($a)
 
     ~IF($a > 2)
         ~IF ((4 > 2) || 3 > 1)
             Hello world
         ~ENDIF
+    ~ENDIF
+
+    ~IF($a < 3)
+        yup yup
+    ~ELSEIF($a > 3)
+        AHAHAHA
     ~ENDIF
 
     ~IF($a > 4)

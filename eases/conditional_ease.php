@@ -14,6 +14,18 @@ function if_ease_cond($condition_state): String {
     // Return equivalent php statment
     return "<?php if($condition): ?>"."\n";
 }
+/**
+ * Summary of Eases\conditional\else_if_ease_cond
+ * @param mixed $condition_state
+ * @return string
+ * Check the syntax and logic of an ELSEIF ease statment
+ */
+function else_if_ease_cond($condition_state): string {
+    $condition = args_data($condition_state);
+
+    // Return equivalent php statment
+    return "<?php elseif($condition): ?>"."\n";
+}
 
 /**
  * Summary of Eases\end_ease_if

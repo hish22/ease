@@ -1,6 +1,7 @@
 <?php
 
 namespace Error_logic\Block_err;
+use Error_logic\Ease_err_enum;
 use Error_logic\Ease_errors;
 use Common\DS\Stack;
 
@@ -14,7 +15,7 @@ trait Ease_block_err {
         }
     }
 
-    public function no_ease_endif_or_if_included($lines) {
+    public function no_ease_endif_or_if_included($lines,&$err) {
 
         // Initialize the Stack
         $this->init_stack();
@@ -32,15 +33,28 @@ trait Ease_block_err {
 
         // Loop through the file lines
         foreach ($lines as $line) {
-            // Start check whither the line is IF or ENDIF
+            // Start check whither the line is IF or ELSEIF or ENDIF
             // -> and based on that, push to the stack or pop from it
             if(str_contains($line,"~IF")) {
 
                 $this->if_stack->push($line);
 
+            } else if (str_contains($line,"~ELSEIF")) {
+
+                if($this->if_stack->getTop() == 0) {
+                    $err->setErrorCode(Ease_err_enum::ERR108->name);
+                    $err->setErrorMsg(Ease_err_enum::ERR108->value);
+                    $this->throwErr();
+                }
+
+                $this->if_stack->pop();
+                $this->if_stack->push($line);
+
             } else if(trim($line) == "~ENDIF") {
 
                 if($this->if_stack->getTop() == 0) {
+                    $err->setErrorCode(Ease_err_enum::ERR104->name);
+                    $err->setErrorMsg(Ease_err_enum::ERR104->value);
                     $this->throwErr();
                 }
 
@@ -50,6 +64,8 @@ trait Ease_block_err {
         }
 
         if($this->if_stack->getTop() != 0) {
+            $err->setErrorCode(Ease_err_enum::ERR103->name);
+            $err->setErrorMsg(Ease_err_enum::ERR103->value);
             $this->throwErr();
         } else {
             return;

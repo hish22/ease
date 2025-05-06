@@ -22,11 +22,8 @@ class Fetcher extends MainBuffer {
      * @return void
      */
     private static function blockErrHandler($filename,$lines) {
-        $err = new EaseErrorsHandler(
-        Ease_err_enum::ERR106->value,
-        $filename,
-        Ease_err_enum::ERR106->name);
-        $err->no_ease_endif_or_if_included($lines);
+        $err = new EaseErrorsHandler($filename);
+        $err->no_ease_endif_or_if_included($lines,$err);
     }
 
     /**
@@ -52,6 +49,18 @@ class Fetcher extends MainBuffer {
             $extract_ease_with_space = explode(' ',$extract_ease);
 
             $ease = self::ConstructEase($extract_ease,$extract_ease_with_space);
+
+            // Before we check if an ease has an argument or not, we need 
+            // to make sure first that the value returned of constructEase
+            // is not a NULL value
+            if(is_null($ease)) {
+                $err = new EaseErrorsHandler($filename,
+                Ease_err_enum::ERR101->value,
+                Ease_err_enum::ERR101->name,
+                $line,
+                $lines_number);
+                $err->throwErr();
+            }
 
             // First check if the ease has an argument, then after that
             // we Check If the ease is INCLUDE and the parsing type is partial

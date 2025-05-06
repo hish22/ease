@@ -10,7 +10,9 @@ enum Ease_err_enum : String {
     case ERR105 = "Wrong condition statment provided!";
     case ERR106 = "null argument value provided!";
     case ERR107 = "Can't print empty parentheses";
+    case ERR108 = "each ELSEIF ease must have an equivalent IF!";
     case ERR201 = "null file location provided!";
     case ERR202 = "No such ease file!";
     case ERR203 = "invalid include of same file!";
+    case ERR301 = "Block Error found!";
 }
