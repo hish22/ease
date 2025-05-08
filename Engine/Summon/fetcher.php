@@ -23,7 +23,7 @@ class Fetcher extends MainBuffer {
      */
     private static function blockErrHandler($filename,$lines) {
         $err = new EaseErrorsHandler($filename);
-        $err->no_ease_endif_or_if_included($lines,$err);
+        $err->iterative_conditional_examiner($lines,$err);
     }
 
     /**

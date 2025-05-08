@@ -12,5 +12,7 @@ enum Ease : String {
     case ELSEIF = "ELSEIF";
     case ENDIF = "ENDIF";
     case PRINT = "PRINT";
+    case LOOP = "LOOP";
+    case ENDLOOP = "ENDLOOP";
 
 }

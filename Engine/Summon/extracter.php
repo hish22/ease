@@ -20,6 +20,9 @@ use function Eases\dynamic\patch;
 use function Eases\conditional\if_ease_cond;
 use function Eases\dynamic\_print;
 use function Eases\conditional\else_if_ease_cond;
+use function Eases\conditional\loop_ease;
+use function Eases\conditional\end_loop_ease;
+
 
 class Extracter {
 
@@ -158,6 +161,29 @@ class Extracter {
                     $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
 
                 return htmlspecialchars(end_ease_if());
+            break;
+
+            case Ease::LOOP:
+                $err = new EaseErrorsHandler($filename,
+                Ease_err_enum::ERR103->value,
+                Ease_err_enum::ERR103->name,
+                $line,
+                $lines_count);
+                $err->null_parm_or_argum_inc_pran($line);
+
+                return htmlspecialchars(loop_ease($line));
+            break;
+
+            case Ease::ENDLOOP:
+                $err = new EaseErrorsHandler(
+                    $filename,
+                    Ease_err_enum::ERR102->value
+                    ,Ease_err_enum::ERR102->name,
+                    $line,
+                    $lines_count);
+                    $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
+
+                    return htmlspecialchars(end_loop_ease());
             break;
 
             case Ease::PRINT:

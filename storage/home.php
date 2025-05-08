@@ -1,4 +1,4 @@
-<?php $a = 5; $b = true; $home = 1; ?>
+<?php $a = 5; $b = true; $home = 1; $products = ['apple','orange']; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +14,22 @@
 <?php include 'storage/about.php' ?>
 <?= "WELCOME", " " ,$name ?>
 <?= $a ?>
-
 <?php if($a > 2): ?>
 <?php if((4 > 2) || 3 > 1): ?>
             Hello world
 <?php endif ?>
 <?php endif ?>
 
+
+
 <?php if($a < 3): ?>
         yup yup
 <?php elseif($a > 3): ?>
+<?php foreach($products as $product): ?>
+            <br/>
+<?= $product ?>
+            <br/>
+<?php endforeach ?>
         AHAHAHA
 <?php endif ?>
 
