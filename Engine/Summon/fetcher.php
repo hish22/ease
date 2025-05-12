@@ -43,7 +43,7 @@ class Fetcher extends MainBuffer {
      * @param int $lines_number The line number of the current line in the file.
      * @return void
      */
-    private static function findEase(string $filename,string $line,int $lines_number): void {
+    private static function assembleEase(string $filename,string $line,int $lines_number): void {
         if(str_contains($line,'~')) {
             $extract_ease = explode('~',$line)[1];
             $extract_ease_with_space = explode(' ',$extract_ease);
@@ -62,8 +62,8 @@ class Fetcher extends MainBuffer {
                 $err->throwErr();
             }
 
-            // First check if the ease has an argument, then after that
-            // we Check If the ease is INCLUDE and the parsing type is partial
+            // First we check if the ease has an argument, then after that
+            // we check If the ease is INCLUDE and the parsing type is partial
             // to parse the INCLUDED content
             if(isset($extract_ease_with_space[1])) {
                 self::ParsePartialFile($ease,$extract_ease_with_space[1]);
@@ -167,7 +167,7 @@ class Fetcher extends MainBuffer {
         $controllable_line_nums = 0;
         foreach($lines as $line) {
 
-            self::findEase($filename,$line,$lines_number);
+            self::assembleEase($filename,$line,$lines_number);
 
             $lines_number++;
             $controllable_line_nums++;

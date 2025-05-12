@@ -12,23 +12,18 @@ use Error_logic\Line_err\Ease_line_err;
 
 use function Eases\conditional\end_ease_if;
 
-use function Eases\dynamic\put;
-use function Eases\dynamic\delete;
-use function Eases\dynamic\inculde_content;
-use function Eases\dynamic\head;
-use function Eases\dynamic\patch;
-use function Eases\conditional\if_ease_cond;
-use function Eases\dynamic\_print;
-use function Eases\conditional\else_if_ease_cond;
-use function Eases\conditional\loop_ease;
-use function Eases\conditional\end_loop_ease;
-
 
 class Extracter {
 
     use Ease_line_err;
 
-    // No need to construct such a class
+    /**
+     * There's no need to instantiate the extracter class.
+     * 
+     * The Extracter class is designed as a utility class that provides static 
+     * methods for extracting and processing eases from a knowledge base.
+     * 
+     */
     private function __construct(){}
 
     /**
@@ -52,171 +47,26 @@ class Extracter {
     public static function extract(Ease $ease,array &$ease_with_space,string $line,int $lines_count,string $filename): string {
         $removed_spaces_from_extract_ease = trim($ease_with_space[1] ?? '');
 
-        switch ($ease) {
-            case Ease::PUT:
-               $err = new EaseErrorsHandler(
-                $filename,
-                    Ease_err_enum::ERR102->value,
-                    Ease_err_enum::ERR102->name,
-                    $line,
-                    $lines_count);
-                    $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
+        $params = [
+            $filename,
+            $lines_count,
+            $line,
+            $removed_spaces_from_extract_ease
+        ];
 
-                return htmlspecialchars(put());
-            break;
-    
-            case Ease::DELETE:
-                $err = new EaseErrorsHandler(
-                    $filename,
-                    Ease_err_enum::ERR102->value,
-                    Ease_err_enum::ERR102->name,
-                    $line,
-                    $lines_count);
-                    $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
+        $compile = include 'Config/eases/compile.php';
 
-                return htmlspecialchars(delete());
-            break;
-
-            case Ease::HEAD:
-                $err = new EaseErrorsHandler(
-                    $filename,
-                    Ease_err_enum::ERR102->value
-                    ,Ease_err_enum::ERR102->name,
-                    $line,
-                    $lines_count);
-                    $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
-
-                return htmlspecialchars(head());
-            break;
-
-            case Ease::INCLUDE:
-
-                $err = new EaseErrorsHandler($filename,
-                Ease_err_enum::ERR201->value,
-                Ease_err_enum::ERR201->name,
-                $line,
-                $lines_count);
-                $err->null_parm_or_argum($removed_spaces_from_extract_ease);
-
-                $err = new EaseErrorsHandler($filename,
-                Ease_err_enum::ERR203->value,
-                Ease_err_enum::ERR203->name,
-                $line,
-                $lines_count);
-                $err->no_same_file_included($removed_spaces_from_extract_ease);
-
-                $err = new EaseErrorsHandler($filename,
-                Ease_err_enum::ERR202->value,
-                Ease_err_enum::ERR202->name,
-                $line,
-                $lines_count);
-                $err->no_such_ease_file($removed_spaces_from_extract_ease);
-
-                return htmlspecialchars(inculde_content($removed_spaces_from_extract_ease));
-            break;
-
-            case Ease::PATCH:
-                $err = new EaseErrorsHandler($filename,
-                Ease_err_enum::ERR102->value,
-                Ease_err_enum::ERR102->name,
-                $line,
-                $lines_count);
-                $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
-
-                return htmlspecialchars(patch());
-            break;
-
-            case Ease::IF:
-                $err = new EaseErrorsHandler($filename,
-                Ease_err_enum::ERR103->value,
-                Ease_err_enum::ERR103->name,
-                $line,
-                $lines_count);
-                $err->null_parm_or_argum_inc_pran($line);
-
-                return htmlspecialchars(if_ease_cond($line));
-
-            break;
-
-            case Ease::ELSEIF:
-                $err = new EaseErrorsHandler($filename,
-                Ease_err_enum::ERR108->value,
-                Ease_err_enum::ERR108->name,
-                $line,
-                $lines_count);
-                $err->null_parm_or_argum_inc_pran($line);
-
-                return htmlspecialchars(else_if_ease_cond($line));
-
-            break;
-
-            case Ease::ENDIF:
-
-                $err = new EaseErrorsHandler(
-                    $filename,
-                    Ease_err_enum::ERR102->value
-                    ,Ease_err_enum::ERR102->name,
-                    $line,
-                    $lines_count);
-                    $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
-
-                return htmlspecialchars(end_ease_if());
-            break;
-
-            case Ease::LOOP:
-                $err = new EaseErrorsHandler($filename,
-                Ease_err_enum::ERR103->value,
-                Ease_err_enum::ERR103->name,
-                $line,
-                $lines_count);
-                $err->null_parm_or_argum_inc_pran($line);
-
-                return htmlspecialchars(loop_ease($line));
-            break;
-
-            case Ease::ENDLOOP:
-                $err = new EaseErrorsHandler(
-                    $filename,
-                    Ease_err_enum::ERR102->value
-                    ,Ease_err_enum::ERR102->name,
-                    $line,
-                    $lines_count);
-                    $err->no_args_for_reg_ease($removed_spaces_from_extract_ease);
-
-                    return htmlspecialchars(end_loop_ease());
-            break;
-
-            case Ease::PRINT:
-
-                $err = new EaseErrorsHandler(
-                    $filename,
-                    Ease_err_enum::ERR106->value,
-                    Ease_err_enum::ERR106->name,
-                    $line,
-                    $lines_count
-                );
-
-                $err->no_pran_found($line);
-
-                $err = new EaseErrorsHandler(
-                    $filename,
-                    Ease_err_enum::ERR107->value,
-                    Ease_err_enum::ERR107->name,
-                    $line,
-                    $lines_count
-                );
-
-                $err->null_parm_or_argum_inc_pran($line);
-
-                return htmlspecialchars(_print($line));
-            break;
-
-            default:
+        if(array_key_exists($ease->name,$compile['eases'])) {
+            /** @return string */
+            return $compile['eases'][$ease->name]($params);
+        } else {
             $err = new EaseErrorsHandler($filename,
-            Ease_err_enum::ERR101->value,Ease_err_enum::ERR101->name,$line,$lines_count);
-                $err->throwErr();
+            Ease_err_enum::ERR101->value,
+            Ease_err_enum::ERR101->name,
+            $line,
+            $lines_count);
+            $err->throwErr();
             return '';
-
         }
 
     }

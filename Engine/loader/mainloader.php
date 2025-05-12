@@ -27,11 +27,23 @@ include_once 'Common/DS/Queue.php';
 // Main ease enum.
 include_once 'eases/ease.php';
 
-// Core logic for regular easing.
-include_once 'eases/dynamic_ease.php';
+// Core logic for dynamic easing.
+include_once 'eases/parse/dynamic/parseEchos.php';
+include_once 'eases/parse/dynamic/parseHttpMethods.php';
+include_once 'eases/parse/dynamic/parseIncludes.php';
+// Core logic for control easing.
+include_once 'eases/parse/control/parseConditions.php';
+include_once 'eases/parse/control/parseLoops.php';
+// Core eases exceptions
+include_once 'eases/exceptions/duplicatedInclusion.php';
+include_once 'eases/exceptions/invalidParams.php';
+include_once 'eases/exceptions/nullArguments.php';
+include_once 'eases/exceptions/nullParams.php';
+include_once 'eases/exceptions/unsetParentheses.php';
+include_once 'eases/exceptions/wrongInclusion.php';
 
-// Core logic for conditional easing.
-include_once 'eases/conditional_ease.php';
+
+
 
 /**
  * Retrieve the core error logic related to ease code.
