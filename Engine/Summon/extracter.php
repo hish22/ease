@@ -54,11 +54,9 @@ class Extracter {
             $removed_spaces_from_extract_ease
         ];
 
-        $compile = include 'Config/eases/compile.php';
-
-        if(array_key_exists($ease->name,$compile['eases'])) {
+        if(array_key_exists($ease->name,COMPILE['eases'])) {
             /** @return string */
-            return $compile['eases'][$ease->name]($params);
+            return COMPILE['eases'][$ease->name]($params);
         } else {
             $err = new EaseErrorsHandler($filename,
             Ease_err_enum::ERR101->value,

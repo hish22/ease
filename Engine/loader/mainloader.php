@@ -5,7 +5,7 @@
  */
 
 // Template system configuration file.
-include_once 'config/temp_config.php';
+include_once 'config/template.php';
 
 /**
  * Retrieve commonly used functions shared across different classes.
@@ -42,8 +42,12 @@ include_once 'eases/exceptions/nullParams.php';
 include_once 'eases/exceptions/unsetParentheses.php';
 include_once 'eases/exceptions/wrongInclusion.php';
 
+/**
+ * Retrieve the main configuration file for the eases.
+ */
 
-
+ // eases configuration file.
+include_once 'config/core.php';
 
 /**
  * Retrieve the core error logic related to ease code.

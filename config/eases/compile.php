@@ -2,6 +2,8 @@
 
 return [
     'eases' => [
+        Eases\Ease::GET->name => 'Eases\Parse\Dynamic\get',
+        Eases\Ease::POST->name => 'Eases\Parse\Dynamic\post',
         Eases\Ease::PUT->name => 'Eases\Parse\Dynamic\put',
         Eases\Ease::DELETE->name => 'Eases\Parse\Dynamic\delete',
         Eases\Ease::HEAD->name => 'Eases\Parse\Dynamic\head',

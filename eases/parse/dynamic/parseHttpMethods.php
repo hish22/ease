@@ -4,6 +4,16 @@ namespace Eases\Parse\Dynamic;
 
 use function Eases\Exceptions\invalidParams;
 
+function get($params): string {
+    invalidParams($params);
+    return '<input type="hidden" value="GET" name="_method">'."\n";
+}
+
+function post($params): string {
+    invalidParams($params);
+    return '<input type="hidden" value="POST" name="_method">'."\n";
+}
+
 function put($params): String {
     invalidParams($params);
     return '<input type="hidden" value="PUT" name="_method">'."\n";
