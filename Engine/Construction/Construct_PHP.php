@@ -17,13 +17,14 @@ class Construct_PHP {
     }
 
     private static function check_file($filename,$content,$dir) {
-        if(file_exists("Template/storage/{$filename}.php")) {
-            Save::fetch_cache($filename);
+        $base_filename = basename($filename);
+        if(file_exists("storage/{$base_filename}.php")) {
+            Save::fetch_cache($base_filename);
             $temp_cache = "{$filename}_hash";
             $_filename = $dir != '' ? $dir . "/" . $filename : $filename;
-            if(Save::$hash[$temp_cache] != md5_file("views/{$_filename}.ease.php")) {
+            if(Save::$hash[$temp_cache] != md5_file("{$_filename}.ease.php")) {
                 Save::save_cache(array(
-                    "{$filename}_hash" => md5_file("views/{$_filename}.ease.php")
+                    "{$filename}_hash" => md5_file("{$_filename}.ease.php")
                 ),$filename);
                 self::createphp($filename,$content);
             }
@@ -37,7 +38,8 @@ class Construct_PHP {
 
     public static function construct($filename,$content,$dir) {
         self::check_file($filename,$content,$dir);
-        if(!file_exists("Template/storage/{$filename}.php")) {
+        $base_filename = basename($filename);
+        if(!file_exists("storage/{$base_filename}.php")) {
             self::createphp($filename,$content);
         }
     }

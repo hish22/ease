@@ -25,7 +25,7 @@ trait IncludedFileBuffer {
         self::$partial_files_Queue->enqueue($value);
     }
 
-    protected static function dequeueFromPartialStack(): string {
+    protected static function dequeueFromPartialQueue(): string {
         return self::$partial_files_Queue->dequeue();
     }
 

@@ -72,7 +72,7 @@ abstract class Entry extends MainBuffer {
         if(PARSETYPE == "partial") {
             if(!is_null(self::partialQueue()) && !empty(self::partialQueue())) {
 
-                self::parse_file(self::dequeueFromPartialStack());
+                self::parse_file(self::dequeueFromPartialQueue());
     
             }
         }

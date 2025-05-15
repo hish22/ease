@@ -54,8 +54,10 @@
     ~ENDIF
     ~ENDIF
 
-    ~FILTER( ($products,$product) => $product == 'orange')
+    ~FILTER($products => $product == 'orange')
         <p>~PRINT($product)</p>
     ~ENDFILTER
+
+    
 </body>
 </html>

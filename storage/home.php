@@ -59,5 +59,7 @@
 <?= $product ?>
 <?php endif ?>
 <?php endforeach ?>
+
+    
 </body>
 </html>
