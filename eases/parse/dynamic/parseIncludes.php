@@ -16,7 +16,7 @@ use function Eases\Exceptions\wrongInclusion;
 function inculde_content($params): string {
 
     // removed_spaces_from_extract_ease
-    $content = $params[3];
+    $content = $params['removed_spaces'];
 
     nullParams($params);
     wrongInclusion($params);

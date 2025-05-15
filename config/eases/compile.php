@@ -14,6 +14,9 @@ return [
         Eases\Ease::ELSEIF->name => 'Eases\Parse\Control\else_if_ease_cond',
         Eases\Ease::ENDIF->name => 'Eases\Parse\Control\end_ease_if',
         Eases\Ease::LOOP->name => 'Eases\Parse\Control\loop_ease',
-        Eases\Ease::ENDLOOP->name => 'Eases\Parse\Control\end_loop_ease'
+        Eases\Ease::ENDLOOP->name => 'Eases\Parse\Control\end_loop_ease',
+        Eases\Ease::FILTER->name => 'Eases\Parse\Control\filter_logic',
+        Eases\Ease::ENDFILTER->name => 'Eases\Parse\Control\end_filter_logic',
+        
     ]
 ];

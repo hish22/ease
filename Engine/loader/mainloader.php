@@ -12,7 +12,7 @@ include_once 'config/template.php';
  */
 
 // Extract content inside parentheses.
-include_once 'Common/sap-args.php';
+include_once 'Common/dismantling.php';
 
 // Stack implementation.
 include_once 'Common/DS/Stack.php';
@@ -34,6 +34,7 @@ include_once 'eases/parse/dynamic/parseIncludes.php';
 // Core logic for control easing.
 include_once 'eases/parse/control/parseConditions.php';
 include_once 'eases/parse/control/parseLoops.php';
+include_once 'eases/parse/control/parseFilter.php';
 // Core eases exceptions
 include_once 'eases/exceptions/duplicatedInclusion.php';
 include_once 'eases/exceptions/invalidParams.php';

@@ -7,10 +7,10 @@ use Error_logic\EaseErrorsHandler;
 use Error_logic\Line_err\Ease_line_err;
 function nullArguments($params){
     $err = new EaseErrorsHandler(
-    $params[0],
+    $params['filename'],
         Ease_err_enum::ERR106->value,
         Ease_err_enum::ERR106->name,
-        $params[2],
-        $params[1]);
-        $err->null_parm_or_argum_inc_pran($params[2]);
+        $params['line'],
+        $params['lines_count']);
+        $err->null_parm_or_argum_inc_pran($params['line']);
 }

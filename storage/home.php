@@ -54,5 +54,10 @@
 <?php endif ?>
 <?php endif ?>
 
+<?php foreach($products as $product): ?>
+<?php if($product == 'orange'): ?>
+<?= $product ?>
+<?php endif ?>
+<?php endforeach ?>
 </body>
 </html>

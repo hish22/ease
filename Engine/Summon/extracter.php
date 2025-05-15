@@ -10,8 +10,6 @@ use Error_logic\Ease_err_enum;
 use Error_logic\EaseErrorsHandler;
 use Error_logic\Line_err\Ease_line_err;
 
-use function Eases\conditional\end_ease_if;
-
 
 class Extracter {
 
@@ -48,10 +46,10 @@ class Extracter {
         $removed_spaces_from_extract_ease = trim($ease_with_space[1] ?? '');
 
         $params = [
-            $filename,
-            $lines_count,
-            $line,
-            $removed_spaces_from_extract_ease
+            'filename'=>$filename,
+            'lines_count'=>$lines_count,
+            'line'=>$line,
+            'removed_spaces'=>$removed_spaces_from_extract_ease
         ];
 
         if(array_key_exists($ease->name,COMPILE['eases'])) {

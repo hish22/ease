@@ -13,7 +13,7 @@ use function Eases\Exceptions\unsetParentheses;
  */
 function if_ease_cond($params): String {
 
-    $condition_state = $params[2];
+    $condition_state = $params['line'];
 
     nullArguments($params);
     unsetParentheses($params);
@@ -32,7 +32,7 @@ function if_ease_cond($params): String {
  */
 function else_if_ease_cond($params): string {
 
-    $condition_state = $params[2];
+    $condition_state = $params['line'];
 
     $condition = args_data($condition_state);
 

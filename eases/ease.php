@@ -16,5 +16,7 @@ enum Ease : String {
     case PRINT = "PRINT";
     case LOOP = "LOOP";
     case ENDLOOP = "ENDLOOP";
+    case FILTER = "FILTER";
+    case ENDFILTER = "ENDFILTER";
 
 }

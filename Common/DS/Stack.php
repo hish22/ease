@@ -32,5 +32,9 @@ class Stack{
         return $this->top;
     }
 
+    public function getValue() {
+        return $this->Stack[$this->top-1];
+    }
+
 
 }

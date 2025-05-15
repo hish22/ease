@@ -4,14 +4,16 @@ return [
     'control' => [
         'start' => [
             Eases\Ease::IF->name,
-            Eases\Ease::LOOP->name
+            Eases\Ease::LOOP->name,
+            Eases\Ease::FILTER->name
         ],
         'mid' => [
             Eases\Ease::ELSEIF->name
         ],
         'end' => [
             Eases\Ease::ENDIF->name,
-            Eases\Ease::ENDLOOP->name
+            Eases\Ease::ENDLOOP->name,
+            Eases\Ease::ENDFILTER->name
         ]
     ],
     'dynamic' => [

@@ -15,7 +15,7 @@ use function Eases\Exceptions\unsetParentheses;
  */
 function _print($params): string {
 
-    $content = $params[2];
+    $content = $params['line'];
 
     unsetParentheses($params);
     nullArguments($params);
