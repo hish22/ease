@@ -60,6 +60,10 @@
 <?php endif ?>
 <?php endforeach ?>
 
-    
+<?php foreach($users as $user): ?>
+<?php if($user > 10): ?>
+        <p><?php var_dump($user) ?></p>
+<?php endif ?>
+<?php endforeach ?>
 </body>
 </html>

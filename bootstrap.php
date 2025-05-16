@@ -17,4 +17,16 @@ $eng->full();
 
 // $eng->partial("home");
 
-render("home",["name"=>"hisham"]);
+$list = [
+    'users' => [
+        'user1' => [
+            'age' => 12
+        ],
+        'user2' => [
+            'age' => 15
+        ]
+    ],
+    'name' => 'dude'
+];
+
+render("home",$list);

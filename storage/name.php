@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    
+<?php if($name == 'dude'): ?>
+<?= "yupppppppp" ?>
+<?php endif ?>
 </body>
 </html>

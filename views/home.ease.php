@@ -58,6 +58,8 @@
         <p>~PRINT($product)</p>
     ~ENDFILTER
 
-    
+    ~FILTER($users => $user > 10)
+        <p><?php var_dump($user) ?></p>
+    ~ENDFILTER
 </body>
 </html>

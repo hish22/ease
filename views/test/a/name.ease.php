@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    
+    ~IF($name == 'dude')
+        <p>~PRINT("yupppppppp")</p>
+    ~ENDIF
 </body>
 </html>

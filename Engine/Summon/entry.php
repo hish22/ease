@@ -90,15 +90,15 @@ abstract class Entry extends MainBuffer {
     protected function openView(): void {
         self::init_dir_stack();
 
-        $views = opendir("views");
+        $views = opendir(VIEWS_FILE);
 
         while($fobj = readdir($views)) {
 
-            if($fobj != "." && $fobj != ".." && is_dir("views".DIRECTORY_SEPARATOR.$fobj)) {
-                self::$dir_stack->push("views".DIRECTORY_SEPARATOR.$fobj);
+            if($fobj != "." && $fobj != ".." && is_dir(VIEWS_FILE.DIRECTORY_SEPARATOR.$fobj)) {
+                self::$dir_stack->push(VIEWS_FILE.DIRECTORY_SEPARATOR.$fobj);
             }
 
-            self::parse_file("views".DIRECTORY_SEPARATOR.$fobj);
+            self::parse_file(VIEWS_FILE.DIRECTORY_SEPARATOR.$fobj);
 
         }
         self::inner_views();
