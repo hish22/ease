@@ -27,7 +27,7 @@ trait Ease_block_err {
         } else if($pos2) {
             $line = substr($line,0,$pos2);
         }
-        $line = trim($line);
+        $line = strtoupper(trim($line));
         return $line;
     }
 

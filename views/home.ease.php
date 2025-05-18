@@ -15,7 +15,7 @@
     <h1> ~PRINT("WELCOME", " " ,$name) </h1>
     ~PRINT($a)
     ~IF($a > 2)
-        ~IF ((4 > 2) || 3 > 1)
+        ~IF((4 > 2) || 3 > 1)
             Hello world
         ~ENDIF
     ~ENDIF
@@ -48,15 +48,15 @@
         ~ENDIF
     ~ENDIF
     
-    ~IF(true)
-    ~IF(true)
+    ~if(true)
+    ~if(true)
         <p>Test</p>
-    ~ENDIF
-    ~ENDIF
+    ~endif
+    ~endif
 
-    ~FILTER($products => $product == 'orange')
+    ~filter($products => $product == 'orange')
         <p>~PRINT($product)</p>
-    ~ENDFILTER
+    ~endfilter
 
     ~FILTER($users => $user > 10)
         <p><?php var_dump($user) ?></p>

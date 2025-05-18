@@ -48,12 +48,12 @@ class Fetcher extends MainBuffer {
             $extract_ease = explode('~',$line)[1];
             $extract_ease_with_space = explode(' ',$extract_ease);
 
-            $ease = self::ConstructEase($extract_ease,$extract_ease_with_space);
+            $easeEnum = self::ConstructEase($extract_ease_with_space);
 
             // Before we check if an ease has an argument or not, we need 
             // to make sure first that the value returned of constructEase
             // is not a NULL value
-            if(is_null($ease)) {
+            if(is_null($easeEnum)) {
                 $err = new EaseErrorsHandler($filename,
                 Ease_err_enum::ERR101->value,
                 Ease_err_enum::ERR101->name,
@@ -66,10 +66,10 @@ class Fetcher extends MainBuffer {
             // we check If the ease is INCLUDE and the parsing type is partial
             // to parse the INCLUDED content
             if(isset($extract_ease_with_space[1])) {
-                self::ParsePartialFile($ease,$extract_ease_with_space[1]);
+                self::ParsePartialFile($easeEnum,$extract_ease_with_space[1]);
             }
             
-            $new_parsed_ease = self::extractEase($ease,
+            $new_parsed_ease = self::extractEase($easeEnum,
             $extract_ease_with_space,
             $line,
             $lines_number,
@@ -109,13 +109,9 @@ class Fetcher extends MainBuffer {
      *                                       This is used to assist in parsing the ease symbol and its parameters.
      * @return Ease|null
      */
-    private static function ConstructEase(&$extract_ease,&$extract_ease_with_space): Ease|null {
-        if(str_contains($extract_ease_with_space[0],"(")) {
-            $extract_ease_without_prant = explode("(",$extract_ease);
-            return Ease::tryFrom(explode("\r\n",$extract_ease_without_prant[0])[0]);
-        } else {
-            return Ease::tryFrom(explode("\r\n",$extract_ease_with_space[0])[0]);
-        }
+    private static function ConstructEase(&$extract_ease_with_space): Ease|null {
+        $ease = strtoupper(trim(explode("(",$extract_ease_with_space[0])[0]));
+        return Ease::tryFrom($ease);
     }
     /**
      * Extract the specified ease from the ease knowledge base (Ease enum).
