@@ -20,7 +20,6 @@
 <?php endif ?>
 <?php endif ?>
 
-<?= "welcome"," Honey" ?>
 
 <?php if($a < 3): ?>
         yup yup

@@ -26,6 +26,13 @@ class Fetcher extends MainBuffer {
         $err->iterative_conditional_examiner($lines,$err);
     }
 
+    private static function commentPhase($line) {
+        $observeCommentSlah = explode('~',$line)[0];
+        if(str_contains(trim($observeCommentSlah),'//')) {
+            return;
+        }
+    }
+
     /**
      * Find the equivalent PHP or HTML line that corresponds to the specified ease.
      * 
@@ -44,7 +51,14 @@ class Fetcher extends MainBuffer {
      * @return void
      */
     private static function assembleEase(string $filename,string $line,int $lines_number): void {
+    
         if(str_contains($line,'~')) {
+
+            // Before we assemble an ease
+            // we need to check if this line is commented or not
+            self::commentPhase($line);
+
+            // Now we extract the ease name from the line
             $extract_ease = explode('~',$line)[1];
             $extract_ease_with_space = explode(' ',$extract_ease);
 

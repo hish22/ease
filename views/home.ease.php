@@ -20,7 +20,7 @@
         ~ENDIF
     ~ENDIF
 
-    ~PRINT("welcome"," Honey")
+    //~PRINT("welcome"," Honey")
 
     ~IF($a < 3)
         yup yup
