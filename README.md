@@ -362,7 +362,7 @@ You can prevent specific lines or content from being parsed by the Ease Template
 
 `~{}`
 
-The ~{} syntax is used to embed raw PHP code directly inside an Ease template. This tells the engine to output the enclosed code as-is, without parsing or altering it.
+the ~{} syntax is used to embed and execute raw PHP code within ease templates.
 
 > [!NOTE]
 > Currently, ~{} only supports single-line PHP statements. Multi-line code blocks are not supported at this time.
