@@ -15,30 +15,22 @@ Ease is a lightweight, flexible template engine built with PHP, designed to stre
 
 Templates created with Ease use the .ease.php file extension, clearly distinguishing them from standard PHP files and ensuring better organization within your project structure.
 
-### Example of an ease
+## System Architecture
 
-```php
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    ~HEAD // Example of an ease
-    ~PUT // Another ease
-    <h1>Welcome Brother</h1>
-</body>
-</html>
-```
+The core of the Ease Template Engine is its main component: the Engine. The Engine itself is composed of several subcomponents, with the most critical being the Summon entity.
 
-### Render of an ease file
+<p align="left">
+  <img src="assets/diagrams/Engine Components.png" alt="Alt Text" width="300"/>
+</p>
 
-```php
-use function Engine\Render\Render;
+Summon Entity
+The Summon entity serves as the central entry point and orchestrator of the engine's functionality. It is comprised of three primary classes:
 
-include_once "start-ease-engine.php";
-// home will be mapped from home.ease.php to home.php (<filename>.ease.php -> <filename>.php)
-render("home");
-```
+1. Entry
+   Acts as the main entry point of the engine. It is responsible for locating and opening the view folder to access .ease.php template files.
+
+2. Fetcher
+   Handles the process of reading and fetching the lines of code from the Ease template files. It prepares the content for transformation into the appropriate PHP script.
+
+3. Extractor
+   Extracts the necessary logic and script from the parsed Ease templates. This component interprets the logic within the templates and ensures it integrates correctly with the resulting PHP output.
