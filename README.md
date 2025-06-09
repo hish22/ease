@@ -145,7 +145,7 @@ Block-type error handling scans the entire template file to detect structural is
 
 2. Line-Type Errors
 
-Line-type error handling focuses on detecting issues that occur within a single line. These are usually syntax-related or caused by misuse of template directives.
+Line-type error handling focuses on detecting issues that occur within a single line. These are usually syntax-related or caused by misuse of template eases.
 
 ### Common Exceptions and Error Messages
 
