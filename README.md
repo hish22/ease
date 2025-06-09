@@ -1,7 +1,7 @@
 # Ease PHP Template Engine
 
 <p align="center">
-  <img src="assets/ease_0.1logo.png" alt="Alt Text" width="300"/>
+  <img src="assets/ease_logo.png" alt="Alt Text" width="300"/>
 </p>
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)

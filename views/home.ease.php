@@ -19,9 +19,9 @@
             Hello world
         ~ENDIF
     ~ENDIF
-    //~{echo '<pre>'}
-    //~{echo 'my name is antoine'}
-    //~{echo '</pre>'}
+    ~{echo '<pre>'}
+    ~{echo 'my name is antoine'}
+    ~{echo '</pre>'}
     ~PRINT("welcome"," Honey")
 
     ~IF($a < 3)

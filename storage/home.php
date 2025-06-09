@@ -19,6 +19,9 @@
             Hello world
 <?php endif ?>
 <?php endif ?>
+<?php echo '<pre>' ?>
+<?php echo 'my name is antoine' ?>
+<?php echo '</pre>' ?>
 <?= "welcome"," Honey" ?>
 
 <?php if($a < 3): ?>
