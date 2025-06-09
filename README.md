@@ -84,7 +84,7 @@ Below is a simple example demonstrating how an Ease template file might look:
 </html>
 ```
 
-In this example, the ~print('Hello world') line represents a directive processed by the Ease Template Engine. During rendering, the engine will interpret this line and output:
+In this example, the ~print('Hello world') line represents an ease processed by the Ease Template Engine. During rendering, the engine will interpret this line and output:
 
 ```
 Hello world
