@@ -340,9 +340,6 @@ Note: Triggers parsing of the included file and merges its output.
 ~include way
 ```
 
-> [!NOTE]
-> Currently, ~{} only supports single-line PHP statements. Multi-line code blocks are not supported at this time.
-
 ### Case Insensitivity
 
 Ease template syntax is case-insensitive, meaning that eases can be written in either lowercase or uppercase — or a mix of both — without affecting functionality.
