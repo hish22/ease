@@ -54,7 +54,7 @@ The Buffer component is responsible for storing the parsed content of the Ease f
 
 **Render**
 
-The Render component provides the core rendering functionality of the engine. It is tasked with displaying the final parsed and processed content stored in the Buffer, outputting it as a valid PHP response.
+The Render component provides the core rendering functionality of the engine. It is tasked with displaying the final parsed and processed content stored PHP file, outputting it as a valid PHP response.
 
 **Optimize**
 
@@ -134,3 +134,43 @@ Each Ease template project includes a configuration file that defines how the en
   Specifies the directory structure:
 
   **views:** Defines the path to the folder containing the .ease.php view templates.
+
+### Error handling
+
+The Ease Template Engine provides a structured error handling mechanism designed to assist developers in identifying and resolving issues during parsing and rendering. It supports two types of error detection:
+
+1. Block-Type Errors
+
+Block-type error handling scans the entire template file to detect structural issues, especially those related to the use of opening and closing tags (e.g., unbalanced or missing control structures). This type is ideal for catching errors that affect the overall integrity of the document.
+
+2. Line-Type Errors
+
+Line-type error handling focuses on detecting issues that occur within a single line. These are usually syntax-related or caused by misuse of template directives.
+
+- **Common Exceptions and Error Messages**
+
+The following are predefined exceptions handled by the engine:
+
+- Duplicated Inclusion
+  `Invalid include of same file!`
+  Triggered when the same Ease file is included more than once improperly.
+
+- Invalid Parameters
+  `Regular eases can't have arguments!`
+  Raised when a regular Ease template is passed arguments, which is not allowed.
+
+- Null Arguments
+  `Null argument value provided!`
+  Occurs when a directive receives an argument with a null value.
+
+- Null Parameters
+  `Null file location provided!`
+  Thrown when an include or reference is made to a file without a valid path.
+
+- Unset Parentheses
+  `Can't print empty parentheses`
+  Happens when a print or logic directive is called without any expression inside the parentheses.
+
+- Wrong Inclusion
+  `No such ease file!`
+  Raised when the engine cannot locate the referenced Ease file.
