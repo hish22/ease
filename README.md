@@ -24,6 +24,7 @@ The core of the Ease Template Engine is its main component: the Engine. The Engi
 </p>
 
 **Summon**
+
 The Summon entity serves as the central entry point and orchestrator of the engine's functionality. It is comprised of three primary classes:
 
 1. **Entry**
@@ -36,6 +37,7 @@ The Summon entity serves as the central entry point and orchestrator of the engi
    Extracts the necessary logic and script from the parsed Ease templates. This component interprets the logic within the templates and ensures it integrates correctly with the resulting PHP output.
 
 **Construction**
+
 After completing its operations, the Entry class triggers the ConstructPHP process, which belongs to the Construction component of the engine. This step initiates the construction of the final PHP file based on the extracted logic and structure.
 
 <p align="left">
@@ -43,14 +45,19 @@ After completing its operations, the Entry class triggers the ConstructPHP proce
 </p>
 
 **Buffer**
+
 The Buffer component is responsible for storing the parsed content of the Ease file. It acts as temporary memory during processing, allowing the engine to manipulate and structure the content before rendering.
 
 **Render**
+
 The Render component provides the core rendering functionality of the engine. It is tasked with displaying the final parsed and processed content stored in the Buffer, outputting it as a valid PHP response.
 
 **Optimize**
+
 Optimize is the component responsible for detecting changes in content using the MD5 hash technique. It helps prevent unnecessary parsing by skipping processing if the content has not changed.
 
 <p align="left">
-  <img src="assets/diagrams/Optimize_logic.png" alt="Alt Text" width="500"/>
+  <img src="assets/diagrams/Optimize_logic.png" alt="Alt Text" width="300"/>
 </p>
+
+##
