@@ -2,7 +2,6 @@
 
 namespace Engine\Summon;
 
-use EaseEngine;
 use Engine\Summon\Extracter;
 use Eases\Ease;
 use Error_logic\Ease_err_enum;
@@ -26,10 +25,25 @@ class Fetcher extends MainBuffer {
         $err->iterative_conditional_examiner($lines,$err);
     }
 
+    /**
+     * Skips processing if the given line contains a single-line comment (//) 
+     * before any '~' character. 
+     * Useful for ignoring comment lines during parsing.
+     *
+     * @param mixed $line The line to analyze.
+     * @return void
+     */
     private static function commentPhase($line) {
         $observeCommentSlah = explode('~',$line)[0];
         if(str_contains(trim($observeCommentSlah),'//')) {
-            return;
+            return true;
+        }
+    }
+
+    private static function parseRaw($line) {
+        if(str_starts_with(trim($line),'~{') && str_ends_with(trim($line),'}')) {
+            self::fillBuffer(\Eases\Parse\Raw\rawPHP($line));
+            return true;
         }
     }
 
@@ -51,12 +65,16 @@ class Fetcher extends MainBuffer {
      * @return void
      */
     private static function assembleEase(string $filename,string $line,int $lines_number): void {
-    
+
+        // At first we will check if we have
+        // raw php conversion or not
+        if(self::parseRaw($line)) { return; }
+
         if(str_contains($line,'~')) {
 
             // Before we assemble an ease
             // we need to check if this line is commented or not
-            self::commentPhase($line);
+            if(self::commentPhase($line)) {return;}
 
             // Now we extract the ease name from the line
             $extract_ease = explode('~',$line)[1];

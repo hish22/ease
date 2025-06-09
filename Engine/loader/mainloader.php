@@ -21,6 +21,13 @@ include_once 'Common/DS/Stack.php';
 include_once 'Common/DS/Queue.php';
 
 /**
+ * Retrieve the core logic for raw php.
+ */
+
+// Core logic for Raw php.
+include_once 'eases/parse/raw/parseRaw.php';
+
+/**
  * Retrieve the core logic related to ease code.
  */
 
