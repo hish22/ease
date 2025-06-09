@@ -71,15 +71,66 @@ Optimize is the component responsible for detecting changes in content using the
 Below is a simple example demonstrating how an Ease template file might look:
 
 ```php
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-  </head>
-  <body>
-      ~print('Hello world')
-  </body>
-  </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    ~print('Hello world') // This is a sample of printing data.
+</body>
+</html>
 ```
+
+In this example, the ~print('Hello world') line represents a directive processed by the Ease Template Engine. During rendering, the engine will interpret this line and output:
+
+```
+Hello world
+```
+
+### Configuration
+
+Each Ease template project includes a configuration file that defines how the engine should behave. Below is an example configuration file in JSON format:
+
+```json
+{
+  "main": {
+    "Producation": false,
+    "ParseType": "full"
+  },
+  "error": {
+    "formatPHP": true
+  },
+  "location": {
+    "views": "views"
+  }
+}
+```
+
+- Main Section
+
+  This section controls core behavior of the engine:
+
+  **Production:** When set to true, the engine disables parsing to improve performance in a production environment. If false, parsing is enabled for development.
+
+  **ParseType:** Defines the scope of parsing:
+
+  `"full"`: Parses all .ease.php files in the views directory.
+
+  `"partial"`: Parses only the selected file and any included Ease files.
+
+  `"single"`: Parses only a specific file, giving the developer full control.
+
+- Error Section
+
+  Handles error formatting options:
+
+  **formatPHP:** When true, any PHP errors that occur during parsing or rendering will be formatted and displayed in a more readable form, improving debugging during development.
+
+- Location Section
+
+  Specifies the directory structure:
+
+  **views:** Defines the path to the folder containing the .ease.php view templates.
