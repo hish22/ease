@@ -40,11 +40,25 @@ class Fetcher extends MainBuffer {
         }
     }
 
-    private static function parseRaw($line) {
-        if(str_starts_with(trim($line),'~{') && str_ends_with(trim($line),'}')) {
-            self::fillBuffer(\Eases\Parse\Raw\rawPHP($line));
+    /**
+     * Parses a line starting with `~{` and ending with `}` and converts it into raw PHP code.
+     *
+     * This method checks whether the given line is wrapped in the custom `~{}` syntax.
+     * If it matches the pattern, the line is passed to the raw PHP parser and the 
+     * resulting PHP code is stored in the internal buffer.
+     *
+     * @param mixed $line The input line to parse, typically a string.
+     * @return bool Returns true if the line was successfully parsed and buffered; false otherwise.
+     */
+    private static function parseRaw($line): bool {
+        $trimmed = trim($line);
+        
+        if (str_starts_with($trimmed, '~{') && str_ends_with($trimmed, '}')) {
+            self::fillBuffer(\Eases\Parse\Raw\rawPHP($trimmed));
             return true;
         }
+
+        return false;
     }
 
     /**
