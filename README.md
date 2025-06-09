@@ -15,7 +15,11 @@ Ease is a lightweight, flexible template engine built with PHP, designed to stre
 
 Templates created with Ease use the .ease.php file extension, clearly distinguishing them from standard PHP files and ensuring better organization within your project structure.
 
-## System Architecture
+## prerequisites
+
+`Ease needs at least PHP 8.x.x to work.`
+
+## Engine Architecture
 
 The core of the Ease Template Engine is its main component: the Engine. The Engine itself is composed of several subcomponents, with the most critical being the Summon entity.
 
@@ -60,4 +64,22 @@ Optimize is the component responsible for detecting changes in content using the
   <img src="assets/diagrams/Optimize_logic.png" alt="Alt Text" width="300"/>
 </p>
 
-##
+## Documentation
+
+### Example Usage of the Ease Template Engine
+
+Below is a simple example demonstrating how an Ease template file might look:
+
+```php
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+  </head>
+  <body>
+      ~print('Hello world')
+  </body>
+  </html>
+```
