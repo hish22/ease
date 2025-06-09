@@ -29,4 +29,4 @@ $list = [
     'name' => 'dude'
 ];
 
-render("doc",$list);
+render("home",$list);

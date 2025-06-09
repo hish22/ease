@@ -56,7 +56,7 @@
     ~endif
     ~endif
 
-    ~filter($products => $product == 'orange')
+    ~filter(($products as $product) => $product == 'orange')
         <p>~PRINT($product)</p>
     ~endfilter
 

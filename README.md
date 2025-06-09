@@ -152,25 +152,219 @@ Line-type error handling focuses on detecting issues that occur within a single 
 The following are predefined exceptions handled by the engine:
 
 - Duplicated Inclusion
+
   `Invalid include of same file!`
+
   Triggered when the same Ease file is included more than once improperly.
 
 - Invalid Parameters
+
   `Regular eases can't have arguments!`
+
   Raised when a regular Ease template is passed arguments, which is not allowed.
 
 - Null Arguments
+
   `Null argument value provided!`
+
   Occurs when a directive receives an argument with a null value.
 
 - Null Parameters
+
   `Null file location provided!`
+
   Thrown when an include or reference is made to a file without a valid path.
 
 - Unset Parentheses
+
   `Can't print empty parentheses`
+
   Happens when a print or logic directive is called without any expression inside the parentheses.
 
 - Wrong Inclusion
+
   `No such ease file!`
+
   Raised when the engine cannot locate the referenced Ease file.
+
+### Types of Eases in the Ease Template Engine
+
+Eases are the core components in the Ease Template Engine. They are categorized into two types based on their behavior and purpose:
+
+1. Control Eases
+
+Control eases are responsible for managing logic flow within templates. They handle conditional statements, loops, and block-level logic structures. These eases typically wrap around or control other content within the template.
+
+Examples:
+
+- ~if(...) / ~endif — for conditional logic
+
+- ~loop(...) / ~endloop — for loops
+
+2. Dynamic Eases
+
+Dynamic eases are focused on generating and returning executable PHP code. They do not control flow but rather inject or render values and logic inline.
+
+Examples:
+
+- ~print(...) — outputs data
+- ~head - return http input tag
+
+### Template eases
+
+- 🧠 Control Eases
+
+`~if(condition)`
+
+Description: Starts a conditional block based on the given expression.
+
+```php
+~if(user.isLoggedIn)
+    ~print('Welcome back!')
+~endif
+```
+
+`~loop(iterable) or ~loop(iterable as item)`
+
+Description: Iterates over an array or iterable object.
+
+```php
+~loop(users as user)
+    ~print(user.name)
+~endloop
+```
+
+Other example:
+
+```php
+~loop(users)
+    ~print(user.name)
+~endloop
+```
+
+`~filter(iterable => condition) or ~filter((iterable as item) => condition)`
+
+Description: Applies a specified filter to the data.
+
+```php
+~filter(($products as $product) => $product == 'orange')
+      <p>~PRINT($product)</p>
+~endfilter
+```
+
+Other example:
+
+```php
+~filter($users => $user > 10)
+      <p>~PRINT($product)</p>
+~endfilter
+```
+
+- ⚙️ Dynamic Eases
+
+**HTTP methods hidden input:**
+
+example:
+
+```html
+<input type="hidden" value="GET" name="_method" />
+```
+
+`~GET or ~get`
+
+Description: Generates a hidden input indicating the HTTP GET method.
+
+```php
+~get
+```
+
+`~POST or ~post`
+
+Description: Generates a hidden input indicating the HTTP POST method.
+
+```php
+~post
+```
+
+`~PUT or ~put`
+
+Description: Generates a hidden input indicating the HTTP PUT method.
+
+```php
+~put
+```
+
+`~DELETE or ~delete`
+
+Description: Generates a hidden input indicating the HTTP DELETE method.
+
+```php
+~delete
+```
+
+`~HEAD or ~head`
+Description: Generates a hidden input indicating the HTTP HEAD method.
+
+```php
+~head
+```
+
+`~PATCH or ~patch`
+
+Description: Generates a hidden input indicating the HTTP PATCH method.
+
+```php
+~patch
+```
+
+**Print and echo content**
+
+`~PRINT(expression)`
+
+Description: Outputs the evaluated result of the expression.
+
+```php
+~PRINT(user.name)
+```
+
+**Include other ease file content:**
+
+`~INCLUDE filename or ~include filename`
+
+Description: Includes another .ease.php file into the current template.
+
+Note: Triggers parsing of the included file and merges its output.
+
+```php
+~INCLUDE test/about
+~include way
+```
+
+### Comments
+
+You can prevent specific lines or content from being parsed by the Ease Template Engine by using `//` at the beginning of the line. This allows you to include notes or temporarily disable ease logic without affecting the rendering process.
+
+```php
+// ~print('This will not be parsed or rendered')
+```
+
+### Raw PHP Execution
+
+`~{}`
+
+The ~{} syntax is used to embed raw PHP code directly inside an Ease template. This tells the engine to output the enclosed code as-is, without parsing or altering it.
+
+> [!NOTE]
+> Currently, ~{} only supports single-line PHP statements. Multi-line code blocks are not supported at this time.
+
+```php
+~{ echo "Current year: " . date('Y'); }
+```
+
+## 📌 Purpose
+
+The primary objective of this project is to enhance my proficiency in coding and problem-solving through practical implementation. By developing this template engine, I aimed to deepen my understanding of engine architecture, parsing mechanisms, and PHP internals. While the project may continue to evolve, its core intention remains focused on personal growth and technical skill development.
+
+## Feedback
+
+Feel free to explore or fork the code. Feedback and suggestions are always welcome!
