@@ -179,7 +179,7 @@ The following are predefined exceptions handled by the engine:
 
   `Can't print empty parentheses`
 
-  Happens when a print or logic directive is called without any expression inside the parentheses.
+  Happens when a print or logic ease is called without any expression inside the parentheses.
 
 - Wrong Inclusion
 
