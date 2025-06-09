@@ -219,7 +219,7 @@ Examples:
 Description: Starts a conditional block based on the given expression.
 
 ```php
-~if(user.isLoggedIn)
+~if($user->isLoggedIn)
     ~print('Welcome back!')
 ~endif
 ```
@@ -229,16 +229,16 @@ Description: Starts a conditional block based on the given expression.
 Description: Iterates over an array or iterable object.
 
 ```php
-~loop(users as user)
-    ~print(user.name)
+~loop($users as $user)
+    ~print($user)
 ~endloop
 ```
 
 Other example:
 
 ```php
-~loop(users)
-    ~print(user.name)
+~loop($users)
+    ~print($user)
 ~endloop
 ```
 
@@ -319,12 +319,12 @@ Description: Generates a hidden input indicating the HTTP PATCH method.
 
 **Print and echo content**
 
-`~PRINT(expression)`
+`~print(expression) or ~PRINT(expression)`
 
 Description: Outputs the evaluated result of the expression.
 
 ```php
-~PRINT(user.name)
+~print('hello world')
 ```
 
 **Include other ease file content:**
@@ -338,6 +338,19 @@ Note: Triggers parsing of the included file and merges its output.
 ```php
 ~INCLUDE test/about
 ~include way
+```
+
+> [!NOTE]
+> Currently, ~{} only supports single-line PHP statements. Multi-line code blocks are not supported at this time.
+
+### Case Insensitivity
+
+Ease template syntax is case-insensitive, meaning that eases can be written in either lowercase or uppercase — or a mix of both — without affecting functionality.
+
+```php
+~print('Hello')
+~PRINT('Hello')
+~PrInT('Hello')
 ```
 
 ### Comments
