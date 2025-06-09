@@ -167,7 +167,7 @@ The following are predefined exceptions handled by the engine:
 
   `Null argument value provided!`
 
-  Occurs when a directive receives an argument with a null value.
+  Occurs when an ease receives an argument with a null value.
 
 - Null Parameters
 
