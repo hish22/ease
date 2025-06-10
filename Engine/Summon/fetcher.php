@@ -53,14 +53,14 @@ class Fetcher extends MainBuffer {
     private static function parseRaw($line): bool {
         $trimmed = trim($line);
         
-        if (str_starts_with($trimmed, '~{') && str_ends_with($trimmed, '}')) {
-            self::fillBuffer(\Eases\Parse\Raw\rawPHP($trimmed));
+        if (str_contains($trimmed, '~{') && str_contains($trimmed, '}')) {
+            self::fillBuffer(self::injectTags(\Eases\Parse\Raw\rawPHP($trimmed),$line));
             return true;
         }
 
         return false;
     }
-    
+
     /**
      * Injects HTML tags from the original line into a newly parsed ease string.
      *
@@ -87,7 +87,6 @@ class Fetcher extends MainBuffer {
         $less_than_sign = strpos($tags[1],'&lt;');
         $right_tags = trim(substr($tags[1],$less_than_sign));
         $left_tags = trim($tags[0]);
-
         $new_line = trim($left_tags . $new_parsed_ease . $right_tags);
         return $new_line;
     }

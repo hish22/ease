@@ -10,5 +10,5 @@ function rawPHP($script) {
 
     $neatScript = extract_from_braces($script);
 
-    return "<?php $neatScript ?>"."\n";
+    return "<?php $neatScript ?>";
 }

@@ -114,9 +114,11 @@ function extract_from_braces($arg) {
     // Remove leading and trailing spaces
     $rm_ws = trim($arg);
 
-    // Find the first occurrence of the open parentheses
+    // The value without the right brace
+    $rm_close_brace = explode("}",$rm_ws);
+
+    // Find the first occurrence of the open brace
     $open_pos = strpos($rm_ws,"{") + 1;
 
-    // The condition value without parentheses
-    return substr($rm_ws,$open_pos,-1);
+    return substr($rm_close_brace[0],$open_pos);
 }
