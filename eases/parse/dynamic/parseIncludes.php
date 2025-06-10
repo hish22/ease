@@ -23,5 +23,5 @@ function inculde_content($params): string {
     duplicatedInclusion($params);
 
     $filtered = basename($content);
-    return "<?php include 'storage/{$filtered}.php' ?>"."\n";
+    return "<?php include 'storage/{$filtered}.php' ?>";
 }

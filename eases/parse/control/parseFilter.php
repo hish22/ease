@@ -15,9 +15,9 @@ function filter_logic($params) {
 
     $sep = arrow_sep($control_statment);
 
-    $loop_sep = key_array_separation($sep[0]);
+    // $loop_sep = key_array_separation($sep[0]);
 
-    $params['line'] = "($loop_sep)";
+    $params['line'] = "($sep[0])";
 
     $loop_start = loop_ease($params);
 

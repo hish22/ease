@@ -21,7 +21,7 @@ function loop_ease($params): string {
 
     $extracted_statment = args_data_for_loop($statment);
 
-    return "<?php foreach($extracted_statment): ?>"."\n";
+    return "<?php foreach($extracted_statment): ?>";
 }
 
 /**
@@ -33,6 +33,6 @@ function end_loop_ease($params): string {
 
     invalidParams($params);
 
-    return "<?php endforeach ?>"."\n";
+    return "<?php endforeach ?>";
 }
 

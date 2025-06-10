@@ -13,18 +13,10 @@ include_once 'Engine/ease-engine.php';
 
 $eng = EaseEngine::BuildEaseEngine();
 
-$eng->full();
+$eng->single('doc');
 
-$list = [
-    'users' => [
-        'user1' => [
-            'age' => 12
-        ],
-        'user2' => [
-            'age' => 15
-        ]
-    ],
-    'name' => 'dude'
+$info = [
+    'message' => 'Welcome To The Ease Template engine'
 ];
 
-render("home",$list);
+render('doc',$info);

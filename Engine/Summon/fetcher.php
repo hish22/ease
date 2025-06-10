@@ -60,6 +60,37 @@ class Fetcher extends MainBuffer {
 
         return false;
     }
+    
+    /**
+     * Injects HTML tags from the original line into a newly parsed ease string.
+     *
+     * This function takes a parsed ease string and the original line containing HTML tags,
+     * extracts the tags by splitting the line at the '~' delimiter, and reconstructs a new
+     * line by combining the left tags, the parsed ease string, and the right tags. The original
+     * line is expected to be HTML-encoded to prevent XSS issues.
+     *
+     * @param string $new_parsed_ease The parsed ease string to be injected with tags.
+     * @param string $line The original HTML-encoded line containing tags and the unparsed ease,
+     *                     separated by a '~' delimiter.
+     *
+     * @return string The reconstructed line with the parsed ease string wrapped in the original
+     *                HTML tags, trimmed of excess whitespace.
+     */
+    private static function injectTags($new_parsed_ease,$line) {
+        // Now we need to fill the parsed line with the included tags
+        // that was in the line before the parse operation
+        // var_dump(str_contains(htmlspecialchars($line),'&lt;'));
+        $tags = explode('~',htmlspecialchars($line));
+        // var_dump($tags);
+
+        // remove the unparsed ease
+        $less_than_sign = strpos($tags[1],'&lt;');
+        $right_tags = trim(substr($tags[1],$less_than_sign));
+        $left_tags = trim($tags[0]);
+
+        $new_line = trim($left_tags . $new_parsed_ease . $right_tags);
+        return $new_line;
+    }
 
     /**
      * Find the equivalent PHP or HTML line that corresponds to the specified ease.
@@ -115,17 +146,26 @@ class Fetcher extends MainBuffer {
                 self::ParsePartialFile($easeEnum,$extract_ease_with_space[1]);
             }
             
+            // Now we begin the process of extracting the tags and logic of the
+            // ease to its corresponding PHP script or HTML tag
             $new_parsed_ease = self::extractEase($easeEnum,
             $extract_ease_with_space,
             $line,
             $lines_number,
             $filename);
 
+            // Based on the pattern of an HTML tag, we check if an ease containes HTML tags within its line 
+            $pattern = '/^<\/?[a-zA-Z][a-zA-Z0-9]*(?:\s+[a-zA-Z-]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\s>]*))?)*\s*\/?>/';
+            if(preg_match($pattern, trim($line))) {
+                $new_parsed_ease = self::injectTags($new_parsed_ease,$line);
+            }
+
+            // Fill the buffer with resulted tags and eases
             self::fillBuffer($new_parsed_ease);
 
 
         } else {
-            self::addToBuffer(htmlspecialchars($line));
+            self::addToBuffer(trim(htmlspecialchars($line)));
         }
     }
 
@@ -157,6 +197,7 @@ class Fetcher extends MainBuffer {
      */
     private static function ConstructEase(&$extract_ease_with_space): Ease|null {
         $ease = strtoupper(trim(explode("(",$extract_ease_with_space[0])[0]));
+        $ease = explode('<',$ease)[0];
         return Ease::tryFrom($ease);
     }
     /**

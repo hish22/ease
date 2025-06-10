@@ -89,9 +89,10 @@ function key_array_separation($arg) {
 function arrow_sep($arg) {
 
     $removed_pran = remove_pran($arg);
-
+   
     // explode by =>
     $sep = explode('=>',$removed_pran);
+
     // trim both sides
     $sep[0] = trim($sep[0]);
     $sep[1] = trim($sep[1]);

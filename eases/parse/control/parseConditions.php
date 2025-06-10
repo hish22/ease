@@ -21,7 +21,7 @@ function if_ease_cond($params): String {
     $condition = args_data($condition_state);
 
     // Return equivalent php statment
-    return "<?php if($condition): ?>"."\n";
+    return "<?php if($condition): ?>";
 }
 
 /**
@@ -40,7 +40,7 @@ function else_if_ease_cond($params): string {
     unsetParentheses($params);
 
     // Return equivalent php statment
-    return "<?php elseif($condition): ?>"."\n";
+    return "<?php elseif($condition): ?>";
 }
 
 /**
@@ -52,5 +52,5 @@ function end_ease_if($params): String {
 
     invalidParams($params);
 
-    return "<?php endif ?>"."\n";
+    return "<?php endif ?>";
 }

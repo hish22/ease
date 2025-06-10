@@ -288,15 +288,21 @@ Description: Applies a specified filter to the data.
 
 ```php
 ~filter(($products as $product) => $product == 'orange')
-      <p>~PRINT($product)</p>
+    <p>~PRINT($product)</p>
 ~endfilter
 ```
 
-Other example:
+Other examples:
 
 ```php
 ~filter($users => $user > 10)
-      <p>~PRINT($product)</p>
+    <p>~PRINT($user)</p>
+~endfilter
+```
+
+```php
+~filter([1,2,3,4] as $num => $num > 1)
+    ~print($num)
 ~endfilter
 ```
 

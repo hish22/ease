@@ -12,7 +12,7 @@ use function Eases\Exceptions\invalidParams;
  */
 function get($params): string {
     invalidParams($params);
-    return '<input type="hidden" value="GET" name="_method">' . "\n";
+    return '<input type="hidden" value="GET" name="_method">';
 }
 
 /**
@@ -23,7 +23,7 @@ function get($params): string {
  */
 function post($params): string {
     invalidParams($params);
-    return '<input type="hidden" value="POST" name="_method">' . "\n";
+    return '<input type="hidden" value="POST" name="_method">';
 }
 
 /**
@@ -34,7 +34,7 @@ function post($params): string {
  */
 function put($params): string {
     invalidParams($params);
-    return '<input type="hidden" value="PUT" name="_method">' . "\n";
+    return '<input type="hidden" value="PUT" name="_method">';
 }
 
 /**
@@ -45,7 +45,7 @@ function put($params): string {
  */
 function delete($params): string {
     invalidParams($params);
-    return '<input type="hidden" value="DELETE" name="_method">' . "\n";
+    return '<input type="hidden" value="DELETE" name="_method">';
 }
 
 /**
@@ -56,7 +56,7 @@ function delete($params): string {
  */
 function head($params): string {
     invalidParams($params);
-    return '<input type="hidden" value="HEAD" name="_method">' . "\n";
+    return '<input type="hidden" value="HEAD" name="_method">';
 }
 
 /**
@@ -67,5 +67,5 @@ function head($params): string {
  */
 function patch($params): string {
     invalidParams($params);
-    return '<input type="hidden" value="PATCH" name="_method">' . "\n";
+    return '<input type="hidden" value="PATCH" name="_method">';
 }

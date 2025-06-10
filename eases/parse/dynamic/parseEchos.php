@@ -23,5 +23,5 @@ function _print($params): string {
     // Find parentheses pattern ($x, data)
     preg_match("/\((.*?)\)/",$content,$printable);
 
-    return "<?= $printable[1] ?>"."\n";
+    return "<?= $printable[1] ?>";
 }

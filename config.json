@@ -1,7 +1,7 @@
 {
     "main":{
         "Producation": false,
-        "ParseType": "full"
+        "ParseType": "single"
     },
     "error":{
         "formatPHP": true
