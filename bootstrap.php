@@ -15,8 +15,6 @@ $eng = EaseEngine::BuildEaseEngine();
 
 $eng->full();
 
-// $eng->partial("home");
-
 $list = [
     'users' => [
         'user1' => [
