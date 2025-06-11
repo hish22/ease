@@ -122,3 +122,7 @@ function extract_from_braces($arg) {
 
     return substr($rm_close_brace[0],$open_pos);
 }
+
+function remove_tags($arg) {
+    return preg_replace('/<[^>]+>/', '', $arg);
+}

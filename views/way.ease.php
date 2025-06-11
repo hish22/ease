@@ -1,11 +1,2 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    this is way!
-</body>
-</html>
+<h1>This is way</h1>
+<p>~dump('data')</p>

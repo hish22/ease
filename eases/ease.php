@@ -3,11 +3,11 @@
 namespace Eases;
 
 enum Ease : String {
-    case GET = 'GET';
-    case POST = 'POST';
-    case PUT = 'PUT';
-    case DELETE = 'DELETE';
-    case INCLUDE = 'INCLUDE';
+    case GET = "GET";
+    case POST = "POST";
+    case PUT = "PUT";
+    case DELETE = "DELETE";
+    case INCLUDE = "INCLUDE";
     case HEAD = "HEAD";
     case PATCH = "PATCH";
     case IF = "IF";
@@ -18,5 +18,7 @@ enum Ease : String {
     case ENDLOOP = "ENDLOOP";
     case FILTER = "FILTER";
     case ENDFILTER = "ENDFILTER";
+    case DUMP = "DUMP";
+    case DUMPF = "DUMPF";
 
 }

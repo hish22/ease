@@ -13,7 +13,7 @@ include_once 'Engine/ease-engine.php';
 
 $eng = EaseEngine::BuildEaseEngine();
 
-$eng->single('doc');
+$eng->full();
 
 $info = [
     'message' => 'Welcome To The Ease Template engine'

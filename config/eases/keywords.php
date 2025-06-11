@@ -1,5 +1,7 @@
 <?php
 
+use Eases\Ease;
+
 return [
     'control' => [
         'start' => [
@@ -22,6 +24,8 @@ return [
         Eases\Ease::INCLUDE->name,
         Eases\Ease::PATCH->name,
         Eases\Ease::PUT->name,
-        Eases\Ease::PRINT->name
+        Eases\Ease::PRINT->name,
+        Eases\Ease::DUMP->name,
+        Eases\Ease::DUMPF->name
     ]
 ];

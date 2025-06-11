@@ -14,8 +14,10 @@ trait Ease_line_err {
     }
 
     public function null_parm_or_argum_inc_pran($ease_data_with_parnt) {
-        $args_data = args_data($ease_data_with_parnt);
-        if(is_null($args_data) || empty($args_data)) {
+        $without_keyword = remove_keyword($ease_data_with_parnt);
+        $args_data = trim(remove_pran($without_keyword));
+        $clear = remove_tags($args_data);
+        if(is_null($clear) || empty($clear)) {
             $this->throwErr();
         }
     }

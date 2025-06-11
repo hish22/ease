@@ -17,6 +17,7 @@ return [
         Eases\Ease::ENDLOOP->name => 'Eases\Parse\Control\end_loop_ease',
         Eases\Ease::FILTER->name => 'Eases\Parse\Control\filter_logic',
         Eases\Ease::ENDFILTER->name => 'Eases\Parse\Control\end_filter_logic',
-        
+        Eases\Ease::DUMP->name => 'Eases\Parse\Dynamic\dump',
+        Eases\Ease::DUMPF->name => 'Eases\Parse\Dynamic\dumpf'
     ]
 ];

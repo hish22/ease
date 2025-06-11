@@ -25,3 +25,27 @@ function _print($params): string {
 
     return "<?= $printable[1] ?>";
 }
+
+/**
+ * Return a var_dump script to dump data
+ * @param mixed $params
+ * @return string
+ */
+function dump($params): string {
+    $content = $params['line'];
+
+    unsetParentheses($params);
+    nullArguments($params);
+
+    preg_match("/\((.*?)\)/",$content,$printable);
+
+    return "<?php var_dump($printable[1]) ?>";
+}
+/**
+ * Return a formated var_dump script
+ * @param mixed $params
+ * @return string
+ */
+function dumpf($params): string {
+    return "<pre style='background:#f4f4f4; border:1px solid #ccc; padding:10px; margin:10px 0; font-family:monospace; font-size:18px;'>". dump($params) . "</pre>";
+}

@@ -6,13 +6,16 @@
     <title>Document</title>
 </head>
    <h1>~{echo 'hello world'} </h1>
-   <h1> ~print('Hello world')</h1>
+   // <h1> ~print('Hello world')</h1>
     ~if(4>2)
         <h1>~print('yes')</h1> 
     ~endif
 
-    ~filter([0,1,2,3,4] as $num => $num < 1)
-        ~print($num)
+    ~include way
+
+    ~filter([0,1,2,3,4] as $num => $num > 1)
+        ~print($num . ' ')
     ~endfilter
+    ~dumpf([1,2,3])
 </body>
 </html>
