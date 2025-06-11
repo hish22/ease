@@ -6,6 +6,8 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+![GitHub Release](https://img.shields.io/github/v/release/hish22/ease)
+
 > [!NOTE]
 > ease TE is currently in its alpha version.
 
