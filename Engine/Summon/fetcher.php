@@ -53,6 +53,12 @@ class Fetcher extends MainBuffer {
     private static function parseRaw($line): bool {
         $trimmed = trim($line);
         
+        // Before we assemble an raw php
+        // we need to check if this line is commented or not
+        if(self::commentPhase($trimmed)) {
+            return false;
+        }
+
         if (str_contains($trimmed, '~{') && str_contains($trimmed, '}')) {
             self::fillBuffer(self::injectTags(\Eases\Parse\Raw\rawPHP($trimmed),$line));
             return true;
